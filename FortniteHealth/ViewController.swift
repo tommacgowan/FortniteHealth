@@ -15,8 +15,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var miniShield: UIButton!
     @IBOutlet weak var longGame: UIButton!
     @IBOutlet weak var mediumGame: UIButton!
+    @IBOutlet weak var healthBar: UIImageView!
     @IBOutlet weak var shortGame: UIButton!
-    @IBOutlet weak var healthBar: UILabel!
     @IBOutlet weak var stormNotification: UILabel!
     @IBOutlet weak var healthView: UILabel!
     //VARS
@@ -33,6 +33,7 @@ class ViewController: UIViewController {
         miniShield.alpha = 0
         stormNotification.alpha = 0
         healthBar.alpha = 0
+        healthBar.setWidth(width: 2.5*CGFloat(counter))
         
         
         // Do any additional setup after loading the view, typically from a nib.
@@ -51,6 +52,8 @@ class ViewController: UIViewController {
             counter = counter + 25
             }
         }
+        healthView.text = String("\(Int(counter))/100")
+        healthBar.setWidth(width: 2.5*CGFloat(counter))
     }
     
     @IBAction func shortGame(_ sender: UIButton) {
@@ -66,6 +69,7 @@ class ViewController: UIViewController {
         mediumGame.alpha = 0
         longGame.alpha = 0
         miniShield.alpha = 1
+        healthBar.alpha = 1
     }
     @IBAction func mediumGame(_ sender: UIButton) {
         gameState = 1
@@ -102,6 +106,7 @@ class ViewController: UIViewController {
                 //counter = counter - (1/20)
                 counter = counter - (5)
                 healthView.text = String("\(Int(counter))/100")
+                healthBar.setWidth(width: 2.5*CGFloat(counter))
             }
             else if overallTime > 480 && overallTime <= 720 {
                 counter = counter - (2/20)

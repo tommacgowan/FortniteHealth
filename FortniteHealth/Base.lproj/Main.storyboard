@@ -71,21 +71,16 @@
                                     <action selector="miniShield:" destination="BYZ-38-t0r" eventType="touchUpInside" id="K0H-RO-n7v"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Im-or-6Zr" colorLabel="IBBuiltInLabel-Blue">
-                                <rect key="frame" x="62" y="250" width="250" height="21"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="blue" translatesAutoresizingMaskIntoConstraints="NO" id="LAQ-Qs-gxo">
+                                <rect key="frame" x="62" y="241" width="250" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.084722263400399789" green="0.94537624375917928" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <color key="tintColor" red="0.18251736502709848" green="0.98935497020708318" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.17299091272529599" green="0.2081062133030912" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <color key="highlightedColor" red="0.2078517720394244" green="0.94385909555742353" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </label>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="healthBar" destination="3Im-or-6Zr" id="fWM-ic-Zjb"/>
+                        <outlet property="healthBar" destination="LAQ-Qs-gxo" id="PzA-fP-h87"/>
                         <outlet property="healthView" destination="yX6-tz-ECr" id="7yN-IX-PgC"/>
                         <outlet property="longGame" destination="5wi-Ie-1TM" id="DdQ-pT-EuK"/>
                         <outlet property="mediumGame" destination="Bgy-rK-4Ch" id="jDZ-Zg-SZP"/>
@@ -96,7 +91,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-80.799999999999997" y="131.78410794602701"/>
+            <point key="canvasLocation" x="-80.799999999999997" y="131.52709359605913"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="blue" width="300" height="168"/>
+    </resources>
 </document>
