@@ -26,24 +26,26 @@ class GameViewController: UIViewController {
         healthBar.setWidth(width: 2.5*CGFloat(global.counter))
         global.counter = global.startingHealth
         
-        //determine game type and act accordingly
+        //determine game type and setup storm settings
         if global.gameType == "short"
         {
             global.stormStart = Int(arc4random_uniform(2))
-            gameTimer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: (#selector(GameViewController.updateGameState)), userInfo: nil, repeats: true)
+            global.stormTimes = [global.stormStart, 480, 720, 960, 1200]
+            global.stormDamages = [Double(0), Double(5), Double(2/20), Double(5/20), Double(10/20)]
         }
         else if global.gameType == "medium"
         {
             global.stormStart = 45 + Int(arc4random_uniform(181))
-            gameTimer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: (#selector(GameViewController.updateGameState)), userInfo: nil, repeats: true)
+            global.stormTimes = [global.stormStart, 1440, 2160, 2880, 3600]
+            global.stormDamages = [Double(0), Double(0), Double(0), Double(0), Double(0)]
         }
         else if global.gameType == "long"
         {
             global.stormStart = 90 + Int(arc4random_uniform(361))
-            gameTimer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: (#selector(GameViewController.updateGameState)), userInfo: nil, repeats: true)
+            global.stormTimes = [global.stormStart, 2880, 4320, 5760, 7200]
+            global.stormDamages = [Double(0), Double(0), Double(0), Double(0), Double(0)]
         }
-
-        // Do any additional setup after loading the view.
+        gameTimer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: (#selector(GameViewController.updateGameState)), userInfo: nil, repeats: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -77,25 +79,8 @@ class GameViewController: UIViewController {
             clearGameState()
             performSegue(withIdentifier: "segueToDeath", sender: nil)
         }
-        else if global.gameType == "short"
-        {
-            global.stormTimes = [global.stormStart, 480, 720, 960, 1200]
-            global.stormDamages = [Double(0), Double(5), Double(2/20), Double(5/20), Double(10/20)]
-    
-        }
-        else if global.gameType == "medium"
-        {
-            global.stormTimes = [global.stormStart, 1440, 2160, 2880, 3600]
-            global.stormDamages = [Double(0), Double(0), Double(0), Double(0), Double(0)]
-        }
-        else if global.gameType == "long"
-        {
-            global.stormTimes = [global.stormStart, 2880, 4320, 5760, 7200]
-            global.stormDamages = [Double(0), Double(0), Double(0), Double(0), Double(0)]
-        }
-        
-        
-        if Int(global.overallTime) > global.stormStart && Int(global.overallTime) <= global.stormTimes[1]
+            
+        else if Int(global.overallTime) > global.stormStart && Int(global.overallTime) <= global.stormTimes[1]
         {
             global.damageStep = global.stormDamages[1]
         }
