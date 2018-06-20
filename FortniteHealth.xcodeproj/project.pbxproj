@@ -9,13 +9,16 @@
 /* Begin PBXBuildFile section */
 		338AD7F020DA6C78000B2B94 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 338AD7EF20DA6C78000B2B94 /* Images.xcassets */; };
 		33B93AFD20D7A70900C777AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B93AFC20D7A70900C777AF /* AppDelegate.swift */; };
-		33B93AFF20D7A70900C777AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B93AFE20D7A70900C777AF /* ViewController.swift */; };
+		33B93AFF20D7A70900C777AF /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B93AFE20D7A70900C777AF /* StartViewController.swift */; };
 		33B93B0220D7A70900C777AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33B93B0020D7A70900C777AF /* Main.storyboard */; };
 		33B93B0420D7A70B00C777AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33B93B0320D7A70B00C777AF /* Assets.xcassets */; };
 		33B93B0720D7A70B00C777AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33B93B0520D7A70B00C777AF /* LaunchScreen.storyboard */; };
 		33B93B1220D7A70B00C777AF /* FortniteHealthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B93B1120D7A70B00C777AF /* FortniteHealthTests.swift */; };
 		33B93B1D20D7A70B00C777AF /* FortniteHealthUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B93B1C20D7A70B00C777AF /* FortniteHealthUITests.swift */; };
 		7EEB330520DA9C6000E32B3C /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB330420DA9C6000E32B3C /* UIView.swift */; };
+		7EEB330720DAC1F500E32B3C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB330620DAC1F500E32B3C /* GameViewController.swift */; };
+		7EEB330920DAC3F000E32B3C /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB330820DAC3F000E32B3C /* Global.swift */; };
+		7EEB330B20DACF0C00E32B3C /* DeathViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB330A20DACF0C00E32B3C /* DeathViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +42,7 @@
 		338AD7EF20DA6C78000B2B94 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		33B93AF920D7A70900C777AF /* FortniteHealth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FortniteHealth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33B93AFC20D7A70900C777AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		33B93AFE20D7A70900C777AF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		33B93AFE20D7A70900C777AF /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		33B93B0120D7A70900C777AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		33B93B0320D7A70B00C777AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		33B93B0620D7A70B00C777AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +54,9 @@
 		33B93B1C20D7A70B00C777AF /* FortniteHealthUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortniteHealthUITests.swift; sourceTree = "<group>"; };
 		33B93B1E20D7A70B00C777AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7EEB330420DA9C6000E32B3C /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		7EEB330620DAC1F500E32B3C /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		7EEB330820DAC3F000E32B3C /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		7EEB330A20DACF0C00E32B3C /* DeathViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeathViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,8 +108,11 @@
 			isa = PBXGroup;
 			children = (
 				33B93AFC20D7A70900C777AF /* AppDelegate.swift */,
-				33B93AFE20D7A70900C777AF /* ViewController.swift */,
+				33B93AFE20D7A70900C777AF /* StartViewController.swift */,
 				33B93B0020D7A70900C777AF /* Main.storyboard */,
+				7EEB330A20DACF0C00E32B3C /* DeathViewController.swift */,
+				7EEB330820DAC3F000E32B3C /* Global.swift */,
+				7EEB330620DAC1F500E32B3C /* GameViewController.swift */,
 				7EEB330420DA9C6000E32B3C /* UIView.swift */,
 				33B93B0320D7A70B00C777AF /* Assets.xcassets */,
 				33B93B0520D7A70B00C777AF /* LaunchScreen.storyboard */,
@@ -263,9 +272,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33B93AFF20D7A70900C777AF /* ViewController.swift in Sources */,
+				7EEB330720DAC1F500E32B3C /* GameViewController.swift in Sources */,
+				33B93AFF20D7A70900C777AF /* StartViewController.swift in Sources */,
 				7EEB330520DA9C6000E32B3C /* UIView.swift in Sources */,
+				7EEB330920DAC3F000E32B3C /* Global.swift in Sources */,
 				33B93AFD20D7A70900C777AF /* AppDelegate.swift in Sources */,
+				7EEB330B20DACF0C00E32B3C /* DeathViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
