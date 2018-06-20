@@ -75,6 +75,15 @@
                                 <rect key="frame" x="62" y="241" width="250" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OCe-b8-oye">
+                                <rect key="frame" x="171" y="457" width="39" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Reset"/>
+                                <connections>
+                                    <action selector="resetButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JGG-vZ-426"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -85,6 +94,7 @@
                         <outlet property="longGame" destination="5wi-Ie-1TM" id="DdQ-pT-EuK"/>
                         <outlet property="mediumGame" destination="Bgy-rK-4Ch" id="jDZ-Zg-SZP"/>
                         <outlet property="miniShield" destination="5Q6-aF-AkE" id="Np0-Qy-XIy"/>
+                        <outlet property="resetButton" destination="OCe-b8-oye" id="Wad-i7-OrV"/>
                         <outlet property="shortGame" destination="v4S-4c-MGX" id="uco-iJ-dPg"/>
                         <outlet property="stormNotification" destination="3QC-Mb-aPI" id="im0-6D-zgg"/>
                     </connections>

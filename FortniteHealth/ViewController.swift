@@ -12,6 +12,7 @@ class ViewController: UIViewController {
 
     //OUTLETS
     
+    @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var miniShield: UIButton!
     @IBOutlet weak var longGame: UIButton!
     @IBOutlet weak var mediumGame: UIButton!
@@ -34,6 +35,8 @@ class ViewController: UIViewController {
         stormNotification.alpha = 0
         healthBar.alpha = 0
         healthBar.setWidth(width: 2.5*CGFloat(counter))
+        resetButton.alpha = 0
+        resetButton.isEnabled = false
         
         
         // Do any additional setup after loading the view, typically from a nib.
@@ -149,7 +152,27 @@ class ViewController: UIViewController {
             miniShield.isEnabled = false
             miniShield.alpha = 0
             healthView.text = String("You Died")
+            resetButton.alpha = 1
+            resetButton.isEnabled = true
         }
+    }
+    
+    @IBAction func resetButton(_ sender: UIButton) {
+        shortGame.isEnabled = true
+        mediumGame.isEnabled = true
+        longGame.isEnabled = true
+        shortGame.alpha = 1
+        mediumGame.alpha = 1
+        longGame.alpha = 1
+        overallTime = 0
+        counter = 100
+        healthView.alpha = 0
+        miniShield.alpha = 0
+        stormNotification.alpha = 0
+        healthBar.alpha = 0
+        healthBar.setWidth(width: 2.5*CGFloat(counter))
+        resetButton.alpha = 0
+        resetButton.isEnabled = false
     }
 }
     
