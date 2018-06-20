@@ -18,28 +18,28 @@ class GameViewController: UIViewController {
     @IBOutlet weak var healthView: UILabel!
     
     var gameTimer = Timer()
-    var counter: Double = global.startingHealth
-    var stormStart = 0
+    
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        healthBar.setWidth(width: 2.5*CGFloat(counter))
+        healthBar.setWidth(width: 2.5*CGFloat(global.counter))
+        global.counter = global.startingHealth
         
         //determine game type and act accordingly
         if global.gameType == "short"
         {
-            stormStart = Int(arc4random_uniform(2))
+            global.stormStart = Int(arc4random_uniform(2))
             gameTimer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: (#selector(GameViewController.updateGameState)), userInfo: nil, repeats: true)
         }
         else if global.gameType == "medium"
         {
-            stormStart = 45 + Int(arc4random_uniform(181))
+            global.stormStart = 45 + Int(arc4random_uniform(181))
             gameTimer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: (#selector(GameViewController.updateGameState)), userInfo: nil, repeats: true)
         }
         else if global.gameType == "long"
         {
-            stormStart = 90 + Int(arc4random_uniform(361))
+            global.stormStart = 90 + Int(arc4random_uniform(361))
             gameTimer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: (#selector(GameViewController.updateGameState)), userInfo: nil, repeats: true)
         }
 
@@ -56,93 +56,69 @@ class GameViewController: UIViewController {
     //miniShieldUsed
     @IBAction func miniShield(_ sender: UIButton)
     {
-        if counter < 50 {
-            if counter > 25 {
-                counter = 50
+        if global.counter < 50 {
+            if global.counter > 25 {
+                global.counter = 50
             }
             else {
-                counter = counter + 25
+                global.counter = global.counter + 25
             }
         }
-        healthView.text = String("\(Int(counter))/100")
-        healthBar.setWidth(width: 2.5*CGFloat(counter))
+        healthView.text = String("\(Int(global.counter))/100")
+        healthBar.setWidth(width: 2.5*CGFloat(global.counter))
     }
     
     //update game state
     @objc func updateGameState ()
     {
         global.overallTime = global.overallTime + 1
-        if global.gameType == "short" && counter > 0
-        {
-            if global.overallTime > stormStart && global.overallTime <= 480
-            {
-                counter = counter - (5)
-                healthView.text = String("\(Int(counter))/100")
-                healthBar.setWidth(width: 2.5*CGFloat(counter))
-            }
-            else if global.overallTime > 480 && global.overallTime <= 720
-            {
-                counter = counter - (2/20)
-                healthView.text = String("\(Int(counter))/100")
-            }
-            else if global.overallTime > 720 && global.overallTime <= 960
-            {
-                counter = counter - (5/20)
-                healthView.text = String("\(Int(counter))/100")
-            }
-            else if global.overallTime > 960 && global.overallTime < 1200
-            {
-                counter = counter - (10/20)
-                healthView.text = String("\(Int(counter))/100")
-            }
-            else if global.overallTime == 1200
-            {
-                
-            }
-        }
-        if global.gameType == "medium" && counter > 0
-        {
-            if global.overallTime <= 1440
-            {
-                
-            }
-            else if global.overallTime > 1440 && global.overallTime <= 2160
-            {
-                
-            }
-            else if global.overallTime > 2160 && global.overallTime <= 2880
-            {
-                
-            }
-            else if global.overallTime > 2880 && global.overallTime < 3600
-            {
-                
-            }
-        }
-        if global.gameType == "long" && counter > 0
-        {
-            if global.overallTime <= 2880
-            {
-                
-            }
-            else if global.overallTime > 2880 && global.overallTime <= 4320
-            {
-                
-            }
-            else if global.overallTime > 4320 && global.overallTime <= 5760
-            {
-                
-            }
-            else if global.overallTime > 5760 && global.overallTime < 7200
-            {
-                
-            }
-        }
-        if counter == 0
+        if global.counter <= 0
         {
             clearGameState()
             performSegue(withIdentifier: "segueToDeath", sender: nil)
         }
+        else if global.gameType == "short"
+        {
+            global.stormTimes = [global.stormStart, 480, 720, 960, 1200]
+            global.stormDamages = [Double(0), Double(5), Double(2/20), Double(5/20), Double(10/20)]
+    
+        }
+        else if global.gameType == "medium"
+        {
+            global.stormTimes = [global.stormStart, 1440, 2160, 2880, 3600]
+            global.stormDamages = [Double(0), Double(0), Double(0), Double(0), Double(0)]
+        }
+        else if global.gameType == "long"
+        {
+            global.stormTimes = [global.stormStart, 2880, 4320, 5760, 7200]
+            global.stormDamages = [Double(0), Double(0), Double(0), Double(0), Double(0)]
+        }
+        
+        
+        if Int(global.overallTime) > global.stormStart && Int(global.overallTime) <= global.stormTimes[1]
+        {
+            global.damageStep = global.stormDamages[1]
+        }
+        else if Int(global.overallTime) <= global.stormTimes[2]
+        {
+            global.damageStep = global.stormDamages[2]
+        }
+        else if Int(global.overallTime) <= global.stormTimes[3]
+        {
+            global.damageStep = global.stormDamages[3]
+        }
+        else if Int(global.overallTime) < global.stormTimes[4]
+        {
+            global.damageStep = global.stormDamages[4]
+        }
+        else if Int(global.overallTime) >= global.stormTimes[4]
+        {
+            //after final storm????
+        }
+        global.counter = global.counter - global.damageStep
+        healthView.text = String("\(Int(global.counter))/100")
+        healthBar.setWidth(width: 2.5*CGFloat(global.counter))
+        
     }
     
     
@@ -154,7 +130,7 @@ class GameViewController: UIViewController {
     func clearGameState()
     {
         global.overallTime = 0
-        counter = 100
+        global.counter = 100
         global.gameType = ""
         gameTimer.invalidate()
     }

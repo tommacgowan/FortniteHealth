@@ -19,9 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+    func applicationWillResignActive(_ application: UIApplication)
+    {
+        global.timeLeft = CFAbsoluteTimeGetCurrent()
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -31,10 +31,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        global.timeReturned = CFAbsoluteTimeGetCurrent()
+        global.downTime = global.timeReturned - global.timeLeft
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        for i in 0...Int(global.downTime)
+        {
+            if Int(global.overallTime) + i < global.stormTimes[0]
+            {
+                global.counter = global.counter - global.stormDamages[0]
+            }
+            else if Int(global.overallTime) + i < global.stormTimes[1]
+            {
+                global.counter = global.counter - global.stormDamages[1]
+            }
+            else if Int(global.overallTime) + i < global.stormTimes[2]
+            {
+                global.counter = global.counter - global.stormDamages[2]
+            }
+            else if Int(global.overallTime) + i < global.stormTimes[3]
+            {
+                global.counter = global.counter - global.stormDamages[3]
+            }
+            else if Int(global.overallTime) + i < global.stormTimes[4]
+            {
+                global.counter = global.counter - global.stormDamages[4]
+            }
+        }
+         global.overallTime = global.overallTime + global.downTime
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
