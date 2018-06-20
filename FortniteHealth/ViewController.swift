@@ -12,6 +12,7 @@ class ViewController: UIViewController {
 
     //OUTLETS
     
+    @IBOutlet weak var healthBarBackground: UIImageView!
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var miniShield: UIButton!
     @IBOutlet weak var longGame: UIButton!
@@ -34,6 +35,7 @@ class ViewController: UIViewController {
         miniShield.alpha = 0
         stormNotification.alpha = 0
         healthBar.alpha = 0
+        healthBarBackground.alpha = 0
         healthBar.setWidth(width: 2.5*CGFloat(counter))
         resetButton.alpha = 0
         resetButton.isEnabled = false
@@ -73,6 +75,7 @@ class ViewController: UIViewController {
         longGame.alpha = 0
         miniShield.alpha = 1
         healthBar.alpha = 1
+        healthBarBackground.alpha = 1
     }
     @IBAction func mediumGame(_ sender: UIButton) {
         gameState = 1
@@ -154,6 +157,7 @@ class ViewController: UIViewController {
             healthView.text = String("You Died")
             resetButton.alpha = 1
             resetButton.isEnabled = true
+            gameTimer.invalidate()
         }
     }
     
@@ -170,9 +174,11 @@ class ViewController: UIViewController {
         miniShield.alpha = 0
         stormNotification.alpha = 0
         healthBar.alpha = 0
+        healthBarBackground.alpha = 0
         healthBar.setWidth(width: 2.5*CGFloat(counter))
         resetButton.alpha = 0
         resetButton.isEnabled = false
+        
     }
 }
     
