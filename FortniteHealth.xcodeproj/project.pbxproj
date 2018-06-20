@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		338AD7F020DA6C78000B2B94 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 338AD7EF20DA6C78000B2B94 /* Images.xcassets */; };
 		33B93AFD20D7A70900C777AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B93AFC20D7A70900C777AF /* AppDelegate.swift */; };
 		33B93AFF20D7A70900C777AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B93AFE20D7A70900C777AF /* ViewController.swift */; };
 		33B93B0220D7A70900C777AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33B93B0020D7A70900C777AF /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		338AD7EF20DA6C78000B2B94 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		33B93AF920D7A70900C777AF /* FortniteHealth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FortniteHealth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33B93AFC20D7A70900C777AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		33B93AFE20D7A70900C777AF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				33B93B0320D7A70B00C777AF /* Assets.xcassets */,
 				33B93B0520D7A70B00C777AF /* LaunchScreen.storyboard */,
 				33B93B0820D7A70B00C777AF /* Info.plist */,
+				338AD7EF20DA6C78000B2B94 /* Images.xcassets */,
 			);
 			path = FortniteHealth;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33B93B0720D7A70B00C777AF /* LaunchScreen.storyboard in Resources */,
+				338AD7F020DA6C78000B2B94 /* Images.xcassets in Resources */,
 				33B93B0420D7A70B00C777AF /* Assets.xcassets in Resources */,
 				33B93B0220D7A70900C777AF /* Main.storyboard in Resources */,
 			);
@@ -430,7 +434,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FortniteHealth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -438,6 +444,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Tom.FortniteHealth;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -447,7 +454,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FortniteHealth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -455,6 +464,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Tom.FortniteHealth;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
