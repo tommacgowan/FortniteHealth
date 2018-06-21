@@ -17,8 +17,13 @@ class GameViewController: UIViewController {
     @IBOutlet weak var healthBar: UIImageView!
     @IBOutlet weak var stormNotification: UILabel!
     @IBOutlet weak var healthView: UILabel!
-    
+    @IBOutlet weak var chugShield: UIButton!
     var gameTimer = Timer()
+    
+    
+    var miniDrinkTime: Double = 2.5
+    var bigDrinkTime: Double = 5
+    var chugDrinkTime: Double = 15
     
     
     override func viewDidLoad()
@@ -59,33 +64,39 @@ class GameViewController: UIViewController {
     //miniShieldUsed
     @IBAction func miniShield(_ sender: UIButton)
     {
-        if global.counter < 50 {
-            if global.counter > 25 {
-                global.counter = 50
-            }
-            else {
-                global.counter = global.counter + 25
-            }
+        if global.counter < 50
+        {
+            drinkDelay(time: miniDrinkTime, type: "mini")
         }
-        healthView.text = String("\(Int(global.counter))/100")
-        healthBar.setWidth(width: 2.5*CGFloat(global.counter))
     }
     
     //bigShieldUsed
-    @IBAction func bigShield(_ sender: UIButton) {
-        if global.counter > 50 {
-            global.counter = 100
-        }
-        else {
-            global.counter = global.counter + 50
-        }
-        healthView.text = String("\(Int(global.counter))/100")
-        healthBar.setWidth(width: 2.5*CGFloat(global.counter))
+    @IBAction func bigShield(_ sender: UIButton)
+    {
+       drinkDelay(time: bigDrinkTime, type: "big")
+    }
+    
+    //chugShieldUsed
+    @IBAction func chugShield(_ sender: UIButton)
+    {
+        drinkDelay(time: chugDrinkTime, type: "chug")
     }
     
     //update game state
     @objc func updateGameState ()
     {
+        if (global.finishDrink < CFAbsoluteTimeGetCurrent()) && (global.drinking == true)
+        {
+            drink(type: global.drinkType)
+            updateView()
+            global.drinking = false
+            miniShield.isEnabled = true
+            bigShield.isEnabled = true
+            chugShield.isEnabled = true
+            miniShield.alpha = 1
+            bigShield.alpha = 1
+            chugShield.alpha = 1
+        }
         global.overallTime = global.overallTime + 1
         if global.counter <= 0
         {
@@ -96,26 +107,32 @@ class GameViewController: UIViewController {
         else if Int(global.overallTime) > global.stormTimes[0] && Int(global.overallTime) <= global.stormTimes[1]
         {
             global.damageStep = global.stormDamages[1]
+            global.counter = global.counter - global.damageStep
+            updateView()
         }
         else if Int(global.overallTime) <= global.stormTimes[2]
         {
             global.damageStep = global.stormDamages[2]
+            global.counter = global.counter - global.damageStep
+            updateView()
         }
         else if Int(global.overallTime) <= global.stormTimes[3]
         {
             global.damageStep = global.stormDamages[3]
+            global.counter = global.counter - global.damageStep
+            updateView()
         }
         else if Int(global.overallTime) < global.stormTimes[4]
         {
             global.damageStep = global.stormDamages[4]
+            global.counter = global.counter - global.damageStep
+            updateView()
         }
         else if Int(global.overallTime) >= global.stormTimes[4]
         {
             //after final storm????
         }
-        global.counter = global.counter - global.damageStep
-        healthView.text = String("\(Int(global.counter))/100")
-        healthBar.setWidth(width: 2.5*CGFloat(global.counter))
+        
         
     }
     
@@ -133,4 +150,57 @@ class GameViewController: UIViewController {
         gameTimer.invalidate()
     }
     
+    func updateView()
+    {
+        healthView.text = String("\(Int(global.counter))/100")
+        healthBar.setWidth(width: 2.5*CGFloat(global.counter))
+    }
+    
+    func drink(type: String)
+    {
+            if type == "mini"
+            {
+                if global.counter < 50
+                {
+                    if global.counter > 25
+                    {
+                        global.counter = 50
+                    }
+                    else
+                    {
+                        global.counter = global.counter + 25
+                    }
+                }
+            }
+            else if type == "big"
+            {
+                if global.counter > 50
+                {
+                    global.counter = 100
+                }
+                else
+                {
+                    global.counter = global.counter + 50
+                }
+               
+            }
+            else if type == "chug"
+            {
+                global.counter = 100
+            }
+    }
+    
+    func drinkDelay(time: Double, type: String)
+    {
+        global.drinking = true
+        let startTime = CFAbsoluteTimeGetCurrent()
+        global.finishDrink = startTime + time
+        global.drinkType = type
+        miniShield.isEnabled = false
+        bigShield.isEnabled = false
+        chugShield.isEnabled = false
+        miniShield.alpha = 0.5
+        bigShield.alpha = 0.5
+        chugShield.alpha = 0.5
+    }
 }

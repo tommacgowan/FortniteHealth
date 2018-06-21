@@ -60,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 global.counter = global.counter - global.stormDamages[4]
             }
         }
-         global.overallTime = global.overallTime + global.downTime
+        global.overallTime = global.overallTime + global.downTime
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

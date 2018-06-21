@@ -130,6 +130,9 @@
                                 <rect key="frame" x="62" y="338" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="chugShield:" destination="ZqW-Pf-v8t" eventType="touchUpInside" id="fAP-KP-J3R"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -137,6 +140,7 @@
                     </view>
                     <connections>
                         <outlet property="bigShield" destination="XAh-cn-rC8" id="6nL-Ew-qGR"/>
+                        <outlet property="chugShield" destination="lWn-qi-IK8" id="N4M-g4-36l"/>
                         <outlet property="healthBar" destination="LAQ-Qs-gxo" id="e1T-n7-Xck"/>
                         <outlet property="healthBarBackground" destination="2Rn-nm-g2c" id="t8X-9u-b2P"/>
                         <outlet property="healthView" destination="yX6-tz-ECr" id="eea-U5-PJ2"/>
