@@ -17,6 +17,7 @@ class DeathViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        global.isPause = true
         do
         {
             audioPlayer = try AVAudioPlayer(contentsOf: deathSound!)
@@ -39,13 +40,14 @@ class DeathViewController: UIViewController {
     
     @IBAction func reviveButton(_ sender: UIButton)
     {
+        global.revived = true
         global.counter = 100
-        performSegue(withIdentifier: "segueToGame", sender: nil)
+        performSegue(withIdentifier: "segueToGame2", sender: nil)
     }
     
     @IBAction func homeButton(_ sender: Any)
     {
-        
+        GameViewController().clearGameState()
         performSegue(withIdentifier: "segueToHome2", sender: nil)
     }
     

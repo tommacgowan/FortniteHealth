@@ -14,7 +14,8 @@ class StartViewController: UIViewController {
     //SETUP
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        global.hasShot = Int(arc4random_uniform(5))
+        global.revived = false
         // Do any additional setup after loading the view, typically from a nib.
     }
     override func didReceiveMemoryWarning() {
@@ -24,6 +25,7 @@ class StartViewController: UIViewController {
     
     @IBAction func shortButton(_ sender: UIButton)
     {
+        global.stormStart = Int(arc4random_uniform(4/*121*/))
         global.gameType = "short"
         performSegue(withIdentifier: "segueToGame", sender: nil)
     }
@@ -31,9 +33,11 @@ class StartViewController: UIViewController {
     {
         global.gameType = "medium"
         performSegue(withIdentifier: "segueToGame", sender: nil)
+        global.stormStart = Int(arc4random_uniform(301))
     }
     @IBAction func longButton(_ sender: UIButton)
     {
+        global.stormStart = Int(arc4random_uniform(481))
         global.gameType = "long"
         performSegue(withIdentifier: "segueToGame", sender: nil)
     }

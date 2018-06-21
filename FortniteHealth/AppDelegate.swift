@@ -37,30 +37,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        for i in 0...Int(global.downTime)
+        
+        //only do this if game is currently on gamescreen
+        if global.isPause == false
         {
-            if Int(global.overallTime) + i < global.stormTimes[0]
+            for i in 0...Int(global.downTime)
             {
-                global.counter = global.counter - global.stormDamages[0]
+                if Int(global.overallTime) + i < global.stormTimes[0]
+                {
+                    global.counter = global.counter - global.stormDamages[0]
+                }
+                else if Int(global.overallTime) + i < global.stormTimes[1]
+                {
+                    global.counter = global.counter - global.stormDamages[1]
+                }
+                else if Int(global.overallTime) + i < global.stormTimes[2]
+                {
+                    global.counter = global.counter - global.stormDamages[2]
+                }
+                else if Int(global.overallTime) + i < global.stormTimes[3]
+                {
+                    global.counter = global.counter - global.stormDamages[3]
+                }
+                else if Int(global.overallTime) + i < global.stormTimes[4]
+                {
+                    global.counter = global.counter - global.stormDamages[4]
+                }
             }
-            else if Int(global.overallTime) + i < global.stormTimes[1]
-            {
-                global.counter = global.counter - global.stormDamages[1]
-            }
-            else if Int(global.overallTime) + i < global.stormTimes[2]
-            {
-                global.counter = global.counter - global.stormDamages[2]
-            }
-            else if Int(global.overallTime) + i < global.stormTimes[3]
-            {
-                global.counter = global.counter - global.stormDamages[3]
-            }
-            else if Int(global.overallTime) + i < global.stormTimes[4]
-            {
-                global.counter = global.counter - global.stormDamages[4]
-            }
+            global.overallTime = global.overallTime + global.downTime
         }
-        global.overallTime = global.overallTime + global.downTime
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

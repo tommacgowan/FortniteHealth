@@ -142,6 +142,13 @@
                                     <action selector="chugShield:" destination="ZqW-Pf-v8t" eventType="touchUpInside" id="fAP-KP-J3R"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Stb-bJ-mIe">
+                                <rect key="frame" x="77" y="162" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="bH1-u9-9di"/>
@@ -154,14 +161,36 @@
                         <outlet property="healthView" destination="yX6-tz-ECr" id="eea-U5-PJ2"/>
                         <outlet property="homeButton" destination="OCe-b8-oye" id="p2y-MZ-T8l"/>
                         <outlet property="miniShield" destination="5Q6-aF-AkE" id="edc-0X-Nfh"/>
+                        <outlet property="shotPopUp" destination="qvl-IO-8AS" id="pIN-ei-ksk"/>
+                        <outlet property="stormCount" destination="Stb-bJ-mIe" id="gzY-m9-IVD"/>
                         <outlet property="stormNotification" destination="CTj-cY-Tio" id="6mS-qI-D6K"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="segueToHome" id="DH6-BS-Xlq"/>
                         <segue destination="3Cf-UG-hHf" kind="show" identifier="segueToDeath" id="f6T-ub-w8c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jcJ-HL-xYQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="qvl-IO-8AS">
+                    <rect key="frame" x="0.0" y="0.0" width="398" height="888"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O9T-VL-Liu">
+                            <rect key="frame" x="171" y="508" width="56" height="23"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="done"/>
+                            <connections>
+                                <action selector="doneButton:" destination="ZqW-Pf-v8t" eventType="touchUpInside" id="WGE-tm-5Hp"/>
+                            </connections>
+                        </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="shotTimeRed" translatesAutoresizingMaskIntoConstraints="NO" id="dPt-cd-ceu">
+                            <rect key="frame" x="135" y="358" width="128" height="31"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.97254901960784312" green="0.7803921568627451" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <viewLayoutGuide key="safeArea" id="WZt-MF-OtI"/>
+                </view>
             </objects>
-            <point key="canvasLocation" x="671" y="132"/>
+            <point key="canvasLocation" x="669.60000000000002" y="131.52709359605913"/>
         </scene>
         <!--Death View Controller-->
         <scene sceneID="hE7-7e-hw7">
@@ -206,6 +235,7 @@
                     </view>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="segueToHome2" id="Jdm-qh-NTN"/>
+                        <segue destination="ZqW-Pf-v8t" kind="show" identifier="segueToGame2" id="d3V-36-30c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbX-vh-0Cv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -219,6 +249,7 @@
         <image name="cross" width="134" height="194"/>
         <image name="d72564deb42d9a12610bcdc31963247d" width="78" height="29"/>
         <image name="deathBackground" width="1920" height="1080"/>
+        <image name="done" width="71" height="30"/>
         <image name="fortniteHealthBackground" width="1920" height="1080"/>
         <image name="gameLength" width="317" height="30"/>
         <image name="longGame" width="71" height="30"/>
@@ -226,10 +257,13 @@
         <image name="miniShield" width="512" height="512"/>
         <image name="reviveButton" width="91" height="28"/>
         <image name="shortGame" width="89" height="29"/>
+        <image name="shotTimeRed" width="145" height="29"/>
         <image name="stormNotification" width="376" height="30"/>
         <image name="youDied" width="313" height="69"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Jdm-qh-NTN"/>
+        <segue reference="f6T-ub-w8c"/>
+        <segue reference="d3V-36-30c"/>
+        <segue reference="DH6-BS-Xlq"/>
     </inferredMetricsTieBreakers>
 </document>

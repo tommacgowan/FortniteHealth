@@ -5,6 +5,7 @@
 //  Created by Heath Rusby on 18/6/18.
 //  Copyright © 2018 Heath Rusby. All rights reserved.
 //
+import UIKit
 
 class Global
 {
@@ -22,6 +23,15 @@ class Global
     var drinking: Bool = false
     var finishDrink: Double = 0
     var drinkType: String = ""
+    var gameTimer = Timer()
+    var checkDrinkTimer = Timer()
+    var stormCount = 0
+    var revived = false
+    var isPause = true
+    var hasShot: Int = 0
+    var shotTime = 0
+    var doneShot = false
+    
     
 }
 let global  = Global()

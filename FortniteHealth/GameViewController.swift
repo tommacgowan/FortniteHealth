@@ -11,6 +11,8 @@ import AVFoundation
 
 class GameViewController: UIViewController {
     
+    @IBOutlet var shotPopUp: UIView!
+    @IBOutlet weak var stormCount: UILabel!
     @IBOutlet weak var stormNotification: UIImageView!
     @IBOutlet weak var bigShield: UIButton!
     @IBOutlet weak var healthBarBackground: UIImageView!
@@ -19,8 +21,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var healthBar: UIImageView!
     @IBOutlet weak var healthView: UILabel!
     @IBOutlet weak var chugShield: UIButton!
-    var gameTimer = Timer()
-    var checkDrinkTimer = Timer()
+    
     var audioPlayer = AVAudioPlayer()
     
     let miniShieldSound = Bundle.main.url(forResource: "miniShield", withExtension: "mp3")
@@ -35,32 +36,56 @@ class GameViewController: UIViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        global.isPause = false
         healthBar.setWidth(width: 2.5*CGFloat(global.counter))
         global.counter = global.startingHealth
-        stormNotification.alpha = 0
+        miniShield.isEnabled = true
+        bigShield.isEnabled = true
+        chugShield.isEnabled = true
+        miniShield.alpha = 1
+        bigShield.alpha = 1
+        chugShield.alpha = 1
+        if global.stormCount == 0
+        {
+            stormNotification.alpha = 0
+        }
         
         //determine game type and setup storm settings
         if global.gameType == "short"
         {
-            global.stormStart = Int(arc4random_uniform(121))
-            global.stormTimes = [global.stormStart, 480, 720, 960, 1200]
-            global.stormDamages = [0, 0.01, 0.02, 0.05, 0.1]
+           //setup for testing purposes atm
+            global.stormTimes = [global.stormStart, 10/*480*/, 20/*720*/, 30/*960*/, 50/*1200*/]
+            global.stormDamages = [0, 2/*0.01*/, 3/*0.02*/, 4/*0.05*/, 5/*0.1*/]
         }
         else if global.gameType == "medium"
         {
-            global.stormStart = Int(arc4random_uniform(301))
+            
             global.stormTimes = [global.stormStart, 1440, 2160, 2880, 3600]
             global.stormDamages = [0, 0.0365, 0.0731, 0.183, 0.365]
         }
         else if global.gameType == "long"
         {
-            global.stormStart = Int(arc4random_uniform(481))
+            
             global.stormTimes = [global.stormStart, 2880, 4320, 5760, 7200]
             global.stormDamages = [0, 0.0256, 0.512, 0.128, 0.256]
         }
-        gameTimer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: (#selector(GameViewController.updateGameState)), userInfo: nil, repeats: true)
         
-        checkDrinkTimer = Timer.scheduledTimer(timeInterval: 0.3, target:self, selector: (#selector(GameViewController.checkDrink)), userInfo: nil, repeats: true)
+        if global.revived == false
+        {
+            if global.hasShot == 1
+            {
+                global.shotTime = Int(arc4random_uniform(UInt32(global.stormTimes[4])))
+                    global.doneShot = false
+                NSLog("Has shot at %d",global.shotTime)
+            }
+            else
+            {
+                NSLog("No Shot this time")
+            }
+        }
+        
+        global.gameTimer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: (#selector(GameViewController.updateGameState)), userInfo: nil, repeats: true)
+        global.checkDrinkTimer = Timer.scheduledTimer(timeInterval: 0.3, target:self, selector: (#selector(GameViewController.checkDrink)), userInfo: nil, repeats: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -124,14 +149,24 @@ class GameViewController: UIViewController {
         }
     }
     
+    @IBAction func doneButton(_ sender: UIButton)
+    {
+        self.shotPopUp.removeFromSuperview()
+    }
+    
     //update game state
     @objc func updateGameState ()
     {
        
         global.overallTime = global.overallTime + 1
-        
-        if Int(global.overallTime) > global.stormTimes[0] && Int(global.overallTime) <= global.stormTimes[1]
+        if Int(global.overallTime) <= global.stormTimes[0]
         {
+            global.stormCount = 0
+            //before storm starts
+        }
+        else if Int(global.overallTime) <= global.stormTimes[1]
+        {
+            global.stormCount = 1
             stormNotification.alpha = 1
             global.damageStep = global.stormDamages[1]
             global.counter = global.counter - global.damageStep
@@ -139,18 +174,21 @@ class GameViewController: UIViewController {
         }
         else if Int(global.overallTime) <= global.stormTimes[2]
         {
+            global.stormCount = 2
             global.damageStep = global.stormDamages[2]
             global.counter = global.counter - global.damageStep
             updateView()
         }
         else if Int(global.overallTime) <= global.stormTimes[3]
         {
+            global.stormCount = 3
             global.damageStep = global.stormDamages[3]
             global.counter = global.counter - global.damageStep
             updateView()
         }
         else if Int(global.overallTime) < global.stormTimes[4]
         {
+            global.stormCount = 4
             global.damageStep = global.stormDamages[4]
             global.counter = global.counter - global.damageStep
             updateView()
@@ -158,6 +196,8 @@ class GameViewController: UIViewController {
         else if Int(global.overallTime) >= global.stormTimes[4]
         {
             //after final storm????
+            clearGameState()
+            performSegue(withIdentifier: "segueToHome", sender: nil)
         }
         
         if global.counter <= 0
@@ -166,9 +206,17 @@ class GameViewController: UIViewController {
             {
             audioPlayer.stop()
             }
+            global.gameTimer.invalidate()
+            global.checkDrinkTimer.invalidate()
             performSegue(withIdentifier: "segueToDeath", sender: nil)
         }
-        
+        //check for shot
+        if Int(global.overallTime) >= global.shotTime && global.doneShot == false
+        {
+            self.view.addSubview(shotPopUp)
+            shotPopUp.center = self.view.center
+            global.doneShot = true
+        }
     }
     
     
@@ -181,18 +229,11 @@ class GameViewController: UIViewController {
         performSegue(withIdentifier: "segueToHome", sender: nil)
     }
     
-    func clearGameState()
-    {
-        global.overallTime = 0
-        global.counter = 100
-        global.gameType = ""
-        gameTimer.invalidate()
-    }
-    
     func updateView()
     {
         healthView.text = String("\(Int(round(global.counter)))/100")
         healthBar.setWidth(width: 2.5*CGFloat(global.counter))
+        stormCount.text = String("\(global.stormCount)")
     }
     
     func drink(type: String)
@@ -256,5 +297,19 @@ class GameViewController: UIViewController {
             bigShield.alpha = 1
             chugShield.alpha = 1
          }
+    }
+    
+    func clearGameState()
+    {
+        global.drinking = false
+        global.drinkType = ""
+        global.gameType = ""
+        global.overallTime = 0
+        global.counter = 100
+        global.gameType = ""
+        global.stormCount = 0
+        global.gameTimer.invalidate()
+        global.checkDrinkTimer.invalidate()
+        global.revived = false
     }
 }
