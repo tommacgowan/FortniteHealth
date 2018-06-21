@@ -118,11 +118,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XAh-cn-rC8">
+                                <rect key="frame" x="246" y="338" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Big"/>
+                                <connections>
+                                    <action selector="bigShield:" destination="ZqW-Pf-v8t" eventType="touchUpInside" id="X1J-e8-33P"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lWn-qi-IK8">
+                                <rect key="frame" x="62" y="338" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="bH1-u9-9di"/>
                     </view>
                     <connections>
+                        <outlet property="bigShield" destination="XAh-cn-rC8" id="6nL-Ew-qGR"/>
                         <outlet property="healthBar" destination="LAQ-Qs-gxo" id="e1T-n7-Xck"/>
                         <outlet property="healthBarBackground" destination="2Rn-nm-g2c" id="t8X-9u-b2P"/>
                         <outlet property="healthView" destination="yX6-tz-ECr" id="eea-U5-PJ2"/>

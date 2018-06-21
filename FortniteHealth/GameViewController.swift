@@ -10,6 +10,7 @@ import UIKit
 
 class GameViewController: UIViewController {
     
+    @IBOutlet weak var bigShield: UIButton!
     @IBOutlet weak var healthBarBackground: UIImageView!
     @IBOutlet weak var homeButton: UIButton!
     @IBOutlet weak var miniShield: UIButton!
@@ -31,7 +32,7 @@ class GameViewController: UIViewController {
         {
             global.stormStart = Int(arc4random_uniform(2))
             global.stormTimes = [global.stormStart, 480, 720, 960, 1200]
-            global.stormDamages = [Double(0), Double(5), Double(2/20), Double(5/20), Double(10/20)]
+            global.stormDamages = [Double(0), Double(2), Double(2/20), Double(5/20), Double(10/20)]
         }
         else if global.gameType == "medium"
         {
@@ -70,6 +71,18 @@ class GameViewController: UIViewController {
         healthBar.setWidth(width: 2.5*CGFloat(global.counter))
     }
     
+    //bigShieldUsed
+    @IBAction func bigShield(_ sender: UIButton) {
+        if global.counter > 50 {
+            global.counter = 100
+        }
+        else {
+            global.counter = global.counter + 50
+        }
+        healthView.text = String("\(Int(global.counter))/100")
+        healthBar.setWidth(width: 2.5*CGFloat(global.counter))
+    }
+    
     //update game state
     @objc func updateGameState ()
     {
@@ -80,7 +93,7 @@ class GameViewController: UIViewController {
             performSegue(withIdentifier: "segueToDeath", sender: nil)
         }
             
-        else if Int(global.overallTime) > global.stormStart && Int(global.overallTime) <= global.stormTimes[1]
+        else if Int(global.overallTime) > global.stormTimes[0] && Int(global.overallTime) <= global.stormTimes[1]
         {
             global.damageStep = global.stormDamages[1]
         }
