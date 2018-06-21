@@ -37,8 +37,15 @@ class DeathViewController: UIViewController {
       
     }
     
+    @IBAction func reviveButton(_ sender: UIButton)
+    {
+        global.counter = 100
+        performSegue(withIdentifier: "segueToGame", sender: nil)
+    }
+    
     @IBAction func homeButton(_ sender: Any)
     {
+        
         performSegue(withIdentifier: "segueToHome2", sender: nil)
     }
     

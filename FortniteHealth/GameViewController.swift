@@ -11,12 +11,12 @@ import AVFoundation
 
 class GameViewController: UIViewController {
     
+    @IBOutlet weak var stormNotification: UIImageView!
     @IBOutlet weak var bigShield: UIButton!
     @IBOutlet weak var healthBarBackground: UIImageView!
     @IBOutlet weak var homeButton: UIButton!
     @IBOutlet weak var miniShield: UIButton!
     @IBOutlet weak var healthBar: UIImageView!
-    @IBOutlet weak var stormNotification: UILabel!
     @IBOutlet weak var healthView: UILabel!
     @IBOutlet weak var chugShield: UIButton!
     var gameTimer = Timer()
@@ -37,25 +37,26 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         healthBar.setWidth(width: 2.5*CGFloat(global.counter))
         global.counter = global.startingHealth
+        stormNotification.alpha = 0
         
         //determine game type and setup storm settings
         if global.gameType == "short"
         {
-            global.stormStart = Int(arc4random_uniform(2))
+            global.stormStart = Int(arc4random_uniform(121))
             global.stormTimes = [global.stormStart, 480, 720, 960, 1200]
-            global.stormDamages = [0, 5, 0.1, 0.25, 0.5]
+            global.stormDamages = [0, 0.01, 0.02, 0.05, 0.1]
         }
         else if global.gameType == "medium"
         {
-            global.stormStart = 45 + Int(arc4random_uniform(181))
+            global.stormStart = Int(arc4random_uniform(301))
             global.stormTimes = [global.stormStart, 1440, 2160, 2880, 3600]
-            global.stormDamages = [Double(0), Double(0), Double(0), Double(0), Double(0)]
+            global.stormDamages = [0, 0.0365, 0.0731, 0.183, 0.365]
         }
         else if global.gameType == "long"
         {
-            global.stormStart = 90 + Int(arc4random_uniform(361))
+            global.stormStart = Int(arc4random_uniform(481))
             global.stormTimes = [global.stormStart, 2880, 4320, 5760, 7200]
-            global.stormDamages = [Double(0), Double(0), Double(0), Double(0), Double(0)]
+            global.stormDamages = [0, 0.0256, 0.512, 0.128, 0.256]
         }
         gameTimer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: (#selector(GameViewController.updateGameState)), userInfo: nil, repeats: true)
         
@@ -72,7 +73,7 @@ class GameViewController: UIViewController {
     //miniShieldUsed
     @IBAction func miniShield(_ sender: UIButton)
     {
-        if global.counter < 50
+        if round(global.counter) < 50
         {
             drinkDelay(time: miniDrinkTime, type: "mini")
             do
@@ -90,30 +91,36 @@ class GameViewController: UIViewController {
     //bigShieldUsed
     @IBAction func bigShield(_ sender: UIButton)
     {
-       drinkDelay(time: bigDrinkTime, type: "big")
-        do
+        if round(global.counter) != 100
         {
-            audioPlayer = try AVAudioPlayer(contentsOf: bigShieldSound!)
-            audioPlayer.play()
-        }
-        catch
-        {
+            drinkDelay(time: bigDrinkTime, type: "big")
+            do
+            {
+                audioPlayer = try AVAudioPlayer(contentsOf: bigShieldSound!)
+                audioPlayer.play()
+            }
+            catch
+            {
             
+            }
         }
     }
     
     //chugShieldUsed
     @IBAction func chugShield(_ sender: UIButton)
     {
-        drinkDelay(time: chugDrinkTime, type: "chug")
-        do
+        if round(global.counter) != 100
         {
-            audioPlayer = try AVAudioPlayer(contentsOf: chugJugSound!)
-            audioPlayer.play()
-        }
-        catch
-        {
+            drinkDelay(time: chugDrinkTime, type: "chug")
+            do
+            {
+                audioPlayer = try AVAudioPlayer(contentsOf: chugJugSound!)
+                audioPlayer.play()
+            }
+            catch
+            {
             
+            }
         }
     }
     
@@ -125,6 +132,7 @@ class GameViewController: UIViewController {
         
         if Int(global.overallTime) > global.stormTimes[0] && Int(global.overallTime) <= global.stormTimes[1]
         {
+            stormNotification.alpha = 1
             global.damageStep = global.stormDamages[1]
             global.counter = global.counter - global.damageStep
             updateView()
@@ -154,7 +162,10 @@ class GameViewController: UIViewController {
         
         if global.counter <= 0
         {
-            clearGameState()
+            if miniShield.isEnabled == false
+            {
+            audioPlayer.stop()
+            }
             performSegue(withIdentifier: "segueToDeath", sender: nil)
         }
         
@@ -163,6 +174,10 @@ class GameViewController: UIViewController {
     
     @IBAction func homeButton(_ sender: UIButton) {
         clearGameState()
+        if miniShield.isEnabled == false
+        {
+            audioPlayer.stop()
+        }
         performSegue(withIdentifier: "segueToHome", sender: nil)
     }
     
@@ -182,36 +197,36 @@ class GameViewController: UIViewController {
     
     func drink(type: String)
     {
-            if type == "mini"
+        if type == "mini"
+        {
+            if global.counter < 50
             {
-                if global.counter < 50
+                if global.counter > 25
                 {
-                    if global.counter > 25
-                    {
-                        global.counter = 50
-                    }
-                    else
-                    {
-                        global.counter = global.counter + 25
-                    }
-                }
-            }
-            else if type == "big"
-            {
-                if global.counter > 50
-                {
-                    global.counter = 100
+                    global.counter = 50
                 }
                 else
                 {
-                    global.counter = global.counter + 50
+                    global.counter = global.counter + 25
                 }
-               
             }
-            else if type == "chug"
+        }
+        else if type == "big"
+        {
+            if global.counter > 50
             {
                 global.counter = 100
             }
+            else
+            {
+                global.counter = global.counter + 50
+            }
+               
+        }
+        else if type == "chug"
+        {
+            global.counter = 100
+        }
     }
     
     func drinkDelay(time: Double, type: String)
