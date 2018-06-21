@@ -90,7 +90,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Q6-aF-AkE">
-                                <rect key="frame" x="168" y="332" width="42" height="43"/>
+                                <rect key="frame" x="168" y="332" width="43" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Shield" image="miniShield"/>
                                 <connections>
@@ -118,18 +118,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XAh-cn-rC8">
-                                <rect key="frame" x="246" y="338" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XAh-cn-rC8">
+                                <rect key="frame" x="255" y="332" width="43" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Big"/>
+                                <state key="normal" title="Big" image="bigShield"/>
                                 <connections>
                                     <action selector="bigShield:" destination="ZqW-Pf-v8t" eventType="touchUpInside" id="X1J-e8-33P"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lWn-qi-IK8">
-                                <rect key="frame" x="62" y="338" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lWn-qi-IK8">
+                                <rect key="frame" x="88" y="332" width="43" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Button" image="chugJug"/>
                                 <connections>
                                     <action selector="chugShield:" destination="ZqW-Pf-v8t" eventType="touchUpInside" id="fAP-KP-J3R"/>
                                 </connections>
@@ -192,6 +192,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bigShield" width="512" height="512"/>
+        <image name="chugJug" width="512" height="512"/>
         <image name="fortniteHealthBackground" width="1920" height="1080"/>
         <image name="longGame" width="71" height="30"/>
         <image name="mediumGame" width="115" height="29"/>

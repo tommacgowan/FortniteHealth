@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class GameViewController: UIViewController {
     
@@ -19,7 +20,12 @@ class GameViewController: UIViewController {
     @IBOutlet weak var healthView: UILabel!
     @IBOutlet weak var chugShield: UIButton!
     var gameTimer = Timer()
+    var audioPlayer = AVAudioPlayer()
     
+    let miniShieldSound = Bundle.main.url(forResource: "miniShield", withExtension: "mp3")
+    let bigShieldSound = Bundle.main.url(forResource: "bigShield", withExtension: "mp3")
+    let chugJugSound = Bundle.main.url(forResource: "chugJug", withExtension: "mp3")
+    let deathSound = Bundle.main.url(forResource: "deathSound", withExtension: "mp3")
     
     var miniDrinkTime: Double = 2.5
     var bigDrinkTime: Double = 5
@@ -37,7 +43,7 @@ class GameViewController: UIViewController {
         {
             global.stormStart = Int(arc4random_uniform(2))
             global.stormTimes = [global.stormStart, 480, 720, 960, 1200]
-            global.stormDamages = [Double(0), Double(2), Double(2/20), Double(5/20), Double(10/20)]
+            global.stormDamages = [Double(0), Double(5), Double(2/20), Double(5/20), Double(10/20)]
         }
         else if global.gameType == "medium"
         {
@@ -67,6 +73,15 @@ class GameViewController: UIViewController {
         if global.counter < 50
         {
             drinkDelay(time: miniDrinkTime, type: "mini")
+            do
+            {
+                 audioPlayer = try AVAudioPlayer(contentsOf: miniShieldSound!)
+                audioPlayer.play()
+            }
+            catch
+            {
+                
+            }
         }
     }
     
@@ -74,12 +89,30 @@ class GameViewController: UIViewController {
     @IBAction func bigShield(_ sender: UIButton)
     {
        drinkDelay(time: bigDrinkTime, type: "big")
+        do
+        {
+            audioPlayer = try AVAudioPlayer(contentsOf: bigShieldSound!)
+            audioPlayer.play()
+        }
+        catch
+        {
+            
+        }
     }
     
     //chugShieldUsed
     @IBAction func chugShield(_ sender: UIButton)
     {
         drinkDelay(time: chugDrinkTime, type: "chug")
+        do
+        {
+            audioPlayer = try AVAudioPlayer(contentsOf: chugJugSound!)
+            audioPlayer.play()
+        }
+        catch
+        {
+            
+        }
     }
     
     //update game state
@@ -101,6 +134,15 @@ class GameViewController: UIViewController {
         if global.counter <= 0
         {
             clearGameState()
+            do
+            {
+                audioPlayer = try AVAudioPlayer(contentsOf: deathSound!)
+                audioPlayer.play()
+            }
+            catch
+            {
+                
+            }
             performSegue(withIdentifier: "segueToDeath", sender: nil)
         }
             
