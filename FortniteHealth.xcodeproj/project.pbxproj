@@ -18,11 +18,11 @@
 		33DEC1C820DB79F1003FD0F7 /* chugJug.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 33DEC1C520DB79F1003FD0F7 /* chugJug.mp3 */; };
 		33DEC1C920DB79F1003FD0F7 /* deathSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 33DEC1C620DB79F1003FD0F7 /* deathSound.mp3 */; };
 		33DEC1CB20DB7A06003FD0F7 /* bigShield.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 33DEC1CA20DB7A06003FD0F7 /* bigShield.mp3 */; };
-		33DEC1D720DB7FF1003FD0F7 /* miniShield.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 33DEC1D620DB7FF1003FD0F7 /* miniShield.mp3 */; };
 		7EEB330520DA9C6000E32B3C /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB330420DA9C6000E32B3C /* UIView.swift */; };
 		7EEB330720DAC1F500E32B3C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB330620DAC1F500E32B3C /* GameViewController.swift */; };
 		7EEB330920DAC3F000E32B3C /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB330820DAC3F000E32B3C /* Global.swift */; };
 		7EEB330B20DACF0C00E32B3C /* DeathViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB330A20DACF0C00E32B3C /* DeathViewController.swift */; };
+		7EEB331120DB8B7B00E32B3C /* miniShield.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7EEB331020DB8B7B00E32B3C /* miniShield.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,11 +60,11 @@
 		33DEC1C520DB79F1003FD0F7 /* chugJug.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = chugJug.mp3; sourceTree = "<group>"; };
 		33DEC1C620DB79F1003FD0F7 /* deathSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = deathSound.mp3; sourceTree = "<group>"; };
 		33DEC1CA20DB7A06003FD0F7 /* bigShield.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bigShield.mp3; sourceTree = "<group>"; };
-		33DEC1D620DB7FF1003FD0F7 /* miniShield.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = miniShield.mp3; sourceTree = "<group>"; };
 		7EEB330420DA9C6000E32B3C /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		7EEB330620DAC1F500E32B3C /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		7EEB330820DAC3F000E32B3C /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		7EEB330A20DACF0C00E32B3C /* DeathViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeathViewController.swift; sourceTree = "<group>"; };
+		7EEB331020DB8B7B00E32B3C /* miniShield.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = miniShield.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,8 +126,8 @@
 				33B93B0520D7A70B00C777AF /* LaunchScreen.storyboard */,
 				33B93B0820D7A70B00C777AF /* Info.plist */,
 				33DEC1C520DB79F1003FD0F7 /* chugJug.mp3 */,
+				7EEB331020DB8B7B00E32B3C /* miniShield.mp3 */,
 				33DEC1C620DB79F1003FD0F7 /* deathSound.mp3 */,
-				33DEC1D620DB7FF1003FD0F7 /* miniShield.mp3 */,
 				33DEC1CA20DB7A06003FD0F7 /* bigShield.mp3 */,
 				338AD7EF20DA6C78000B2B94 /* Images.xcassets */,
 			);
@@ -258,7 +258,7 @@
 			files = (
 				33B93B0720D7A70B00C777AF /* LaunchScreen.storyboard in Resources */,
 				33DEC1C820DB79F1003FD0F7 /* chugJug.mp3 in Resources */,
-				33DEC1D720DB7FF1003FD0F7 /* miniShield.mp3 in Resources */,
+				7EEB331120DB8B7B00E32B3C /* miniShield.mp3 in Resources */,
 				33DEC1C920DB79F1003FD0F7 /* deathSound.mp3 in Resources */,
 				338AD7F020DA6C78000B2B94 /* Images.xcassets in Resources */,
 				33B93B0420D7A70B00C777AF /* Assets.xcassets in Resources */,
