@@ -20,15 +20,15 @@ class GameViewController: UIViewController {
     @IBOutlet weak var healthView: UILabel!
     @IBOutlet weak var chugShield: UIButton!
     var gameTimer = Timer()
+    var checkDrinkTimer = Timer()
     var audioPlayer = AVAudioPlayer()
     
     let miniShieldSound = Bundle.main.url(forResource: "miniShield", withExtension: "mp3")
     let bigShieldSound = Bundle.main.url(forResource: "bigShield", withExtension: "mp3")
     let chugJugSound = Bundle.main.url(forResource: "chugJug", withExtension: "mp3")
-    let deathSound = Bundle.main.url(forResource: "deathSound", withExtension: "mp3")
     
-    var miniDrinkTime: Double = 2.5
-    var bigDrinkTime: Double = 5
+    var miniDrinkTime: Double = 2.2
+    var bigDrinkTime: Double = 5.3
     var chugDrinkTime: Double = 15
     
     
@@ -43,7 +43,7 @@ class GameViewController: UIViewController {
         {
             global.stormStart = Int(arc4random_uniform(2))
             global.stormTimes = [global.stormStart, 480, 720, 960, 1200]
-            global.stormDamages = [Double(0), Double(5), Double(2/20), Double(5/20), Double(10/20)]
+            global.stormDamages = [0, 5, 0.1, 0.25, 0.5]
         }
         else if global.gameType == "medium"
         {
@@ -58,6 +58,8 @@ class GameViewController: UIViewController {
             global.stormDamages = [Double(0), Double(0), Double(0), Double(0), Double(0)]
         }
         gameTimer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: (#selector(GameViewController.updateGameState)), userInfo: nil, repeats: true)
+        
+        checkDrinkTimer = Timer.scheduledTimer(timeInterval: 0.3, target:self, selector: (#selector(GameViewController.checkDrink)), userInfo: nil, repeats: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -75,7 +77,7 @@ class GameViewController: UIViewController {
             drinkDelay(time: miniDrinkTime, type: "mini")
             do
             {
-                 audioPlayer = try AVAudioPlayer(contentsOf: miniShieldSound!)
+                audioPlayer = try AVAudioPlayer(contentsOf: miniShieldSound!)
                 audioPlayer.play()
             }
             catch
@@ -118,35 +120,10 @@ class GameViewController: UIViewController {
     //update game state
     @objc func updateGameState ()
     {
-        if (global.finishDrink < CFAbsoluteTimeGetCurrent()) && (global.drinking == true)
-        {
-            drink(type: global.drinkType)
-            updateView()
-            global.drinking = false
-            miniShield.isEnabled = true
-            bigShield.isEnabled = true
-            chugShield.isEnabled = true
-            miniShield.alpha = 1
-            bigShield.alpha = 1
-            chugShield.alpha = 1
-        }
+       
         global.overallTime = global.overallTime + 1
-        if global.counter <= 0
-        {
-            clearGameState()
-            do
-            {
-                audioPlayer = try AVAudioPlayer(contentsOf: deathSound!)
-                audioPlayer.play()
-            }
-            catch
-            {
-                
-            }
-            performSegue(withIdentifier: "segueToDeath", sender: nil)
-        }
-            
-        else if Int(global.overallTime) > global.stormTimes[0] && Int(global.overallTime) <= global.stormTimes[1]
+        
+        if Int(global.overallTime) > global.stormTimes[0] && Int(global.overallTime) <= global.stormTimes[1]
         {
             global.damageStep = global.stormDamages[1]
             global.counter = global.counter - global.damageStep
@@ -175,6 +152,11 @@ class GameViewController: UIViewController {
             //after final storm????
         }
         
+        if global.counter <= 0
+        {
+            clearGameState()
+            performSegue(withIdentifier: "segueToDeath", sender: nil)
+        }
         
     }
     
@@ -194,7 +176,7 @@ class GameViewController: UIViewController {
     
     func updateView()
     {
-        healthView.text = String("\(Int(global.counter))/100")
+        healthView.text = String("\(Int(round(global.counter)))/100")
         healthBar.setWidth(width: 2.5*CGFloat(global.counter))
     }
     
@@ -244,5 +226,20 @@ class GameViewController: UIViewController {
         miniShield.alpha = 0.5
         bigShield.alpha = 0.5
         chugShield.alpha = 0.5
+    }
+    @objc func checkDrink()
+    {
+        if (global.finishDrink < CFAbsoluteTimeGetCurrent()) && (global.drinking == true)
+        {
+            drink(type: global.drinkType)
+            updateView()
+            global.drinking = false
+            miniShield.isEnabled = true
+            bigShield.isEnabled = true
+            chugShield.isEnabled = true
+            miniShield.alpha = 1
+            bigShield.alpha = 1
+            chugShield.alpha = 1
+         }
     }
 }

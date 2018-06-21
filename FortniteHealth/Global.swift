@@ -18,7 +18,7 @@ class Global
     var damageStep: Double = 0
     var stormStart = 0
     var stormTimes: [Int] = [0,0,0,0,0]
-    var stormDamages: [Double] = [0,0,0,0,0]
+    var stormDamages = [0.0,0.0,0.0,0.0,0.0]
     var drinking: Bool = false
     var finishDrink: Double = 0
     var drinkType: String = ""

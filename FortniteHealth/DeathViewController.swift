@@ -7,11 +7,25 @@
 //
 
 import UIKit
+import AVFoundation
 
 class DeathViewController: UIViewController {
+    
+    var audioPlayer = AVAudioPlayer()
+    let deathSound = Bundle.main.url(forResource: "deathSound", withExtension: "mp3")
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        do
+        {
+            audioPlayer = try AVAudioPlayer(contentsOf: deathSound!)
+            audioPlayer.play()
+        }
+        catch
+        {
+            
+        }
 
         // Do any additional setup after loading the view.
     }
@@ -19,6 +33,7 @@ class DeathViewController: UIViewController {
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
+        
       
     }
     
