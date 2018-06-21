@@ -2,7 +2,7 @@
 //  GameViewController.swift
 //  FortniteHealth
 //
-//  Created by Heath Rusby on 21/6/18.
+//  Created by Tom Macgowan on 21/6/18.
 //  Copyright © 2018 Tom Macgowan. All rights reserved.
 //
 
