@@ -56,7 +56,7 @@ class GameViewController: UIViewController {
         if global.gameType == "short"
         {
            //setup for testing purposes atm
-            global.stormTimes = [global.stormStart, 10/*480*/, 20/*720*/, 30/*960*/, 60/*1200*/]
+            global.stormTimes = [global.stormStart, 10/*480*/, 20/*720*/, 30/*960*/, 100/*1200*/]
             global.stormDamages = [0, 1/*0.01*/, 1/*0.02*/, 1/*0.05*/, 1/*0.1*/]
         }
         else if global.gameType == "medium"
@@ -83,7 +83,7 @@ class GameViewController: UIViewController {
             }
             else
             {
-                //NSLog("No Shot this time")
+                NSLog("No Shot this time")
             }
         }
         global.gameTimer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: (#selector(GameViewController.updateGameState)), userInfo: nil, repeats: true)

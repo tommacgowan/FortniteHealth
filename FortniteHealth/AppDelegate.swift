@@ -39,7 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //NSLog("DidEnterBackground")
         if global.gameOn == true
         {
-             assignNotification()
+            
+            assignNotification()
+           
         }
         global.fromBackground = true
         global.timeLeft = CFAbsoluteTimeGetCurrent()
@@ -48,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
         //NSLog("WillEnterForeground")
-        center.removeAllPendingNotificationRequests()
+        
         global.timeReturned = CFAbsoluteTimeGetCurrent()
         global.downTime = global.timeReturned - global.timeLeft
     }
@@ -57,6 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         //NSLog("didBecomeActive")
         //only do this if game is currently on gamescreen
+        center.removeAllPendingNotificationRequests()
         if global.isPause == false && global.fromBackground == true
         {
             for i in 0...Int(global.downTime)
@@ -102,20 +105,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if global.hasShot == 1
         {
             delayShot = Double(global.shotTime - Int(global.overallTime))
-    
         }
-        
+        /*
+        NSLog("delayStorms: %f %f %f %f", delayStorm1,delayStorm2,delayStorm3,delayStorm4)
+        NSLog("delayEndGame: %f", delayGameEnd)
+        NSLog("delayShot: %f", delayShot)
+         */
+ 
+ 
         
         var gameTime = Int(global.overallTime)
         var lifeLeft = global.counter
         var delayHealthWarning = 0
         var delayDeath = 0
         
+        
+        
         if lifeLeft < 20 //dont notify if life left is under warning level already
         {
            delayHealthWarning = -1
         }
-        while lifeLeft >= 0
+        while lifeLeft > 0
         {
             if gameTime <= global.stormTimes[0]
             {
@@ -137,6 +147,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             {
                 lifeLeft = lifeLeft - global.stormDamages[4]
             }
+            else if gameTime > global.stormTimes[4]
+            {
+                lifeLeft = 0
+            }
             gameTime = gameTime + 1
             delayDeath = delayDeath + 1
             if lifeLeft >= 20 //health level required for warning
@@ -144,6 +158,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 delayHealthWarning = delayHealthWarning + 1
             }
         }
+       
+       
         
         center.getNotificationSettings { (settings) in
             if settings.authorizationStatus == .authorized
@@ -169,14 +185,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 {
                 self.requestNotification(identifier: "notifyLowHealth", title: "Health Warning", body: "You're on low health", delay: Double(delayHealthWarning))
                 }
-                if delayShot > 0 //dont change this though
+                if delayShot > 0 && delayShot < Double(delayDeath)//dont change this though
                 {
                     self.requestNotification(identifier: "notifyShot", title: "Alert", body: "Its shot time", delay: Double(delayShot))
                 }
                 
                 self.requestNotification(identifier: "notifyGameEnd", title: "Alert", body: "The game just ended", delay: Double(delayGameEnd))
                 
-                self.requestNotification(identifier: "notifyDeath", title: "Alert", body: "You just died", delay: Double(delayDeath))
+                if delayDeath > 0 && Double(delayDeath) < delayGameEnd - 5
+                {
+                    self.requestNotification(identifier: "notifyDeath", title: "Alert", body: "You just died", delay: Double(delayDeath))
+                }
                 
             }
         }
