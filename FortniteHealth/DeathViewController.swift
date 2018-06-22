@@ -12,6 +12,7 @@ import AVFoundation
 class DeathViewController: UIViewController {
     
     var audioPlayer = AVAudioPlayer()
+    let buttonPress = Bundle.main.url(forResource: "buttonPress", withExtension: "mp3")
     let deathSound = Bundle.main.url(forResource: "deathSound", withExtension: "mp3")
 
     override func viewDidLoad() {
@@ -42,12 +43,30 @@ class DeathViewController: UIViewController {
     {
         global.revived = true
         global.counter = 100
+        do
+        {
+            audioPlayer = try AVAudioPlayer(contentsOf: buttonPress!)
+            audioPlayer.play()
+        }
+        catch
+        {
+            
+        }
         performSegue(withIdentifier: "segueToGame2", sender: nil)
     }
     
     @IBAction func homeButton(_ sender: Any)
     {
         GameViewController().clearGameState()
+        do
+        {
+            audioPlayer = try AVAudioPlayer(contentsOf: buttonPress!)
+            audioPlayer.play()
+        }
+        catch
+        {
+            
+        }
         performSegue(withIdentifier: "segueToHome2", sender: nil)
     }
     

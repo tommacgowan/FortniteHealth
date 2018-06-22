@@ -24,6 +24,7 @@ class GameViewController: UIViewController {
     
     var audioPlayer = AVAudioPlayer()
     
+    let buttonPress = Bundle.main.url(forResource: "buttonPress", withExtension: "mp3")
     let miniShieldSound = Bundle.main.url(forResource: "miniShield", withExtension: "mp3")
     let bigShieldSound = Bundle.main.url(forResource: "bigShield", withExtension: "mp3")
     let chugJugSound = Bundle.main.url(forResource: "chugJug", withExtension: "mp3")
@@ -71,17 +72,18 @@ class GameViewController: UIViewController {
             global.stormDamages = [0, 0.0256, 0.512, 0.128, 0.256]
         }
         
+        //Decides when shot occurs
         if global.revived == false
         {
             if global.hasShot == 1
             {
                 global.shotTime = Int(arc4random_uniform(UInt32(global.stormTimes[4])))
                     global.doneShot = false
-                NSLog("Has shot at %d",global.shotTime)
+                //NSLog("Has shot at %d",global.shotTime)
             }
             else
             {
-                NSLog("No Shot this time")
+                //NSLog("No Shot this time")
             }
         }
         
@@ -150,9 +152,19 @@ class GameViewController: UIViewController {
         }
     }
     
+    //Done button pressed
     @IBAction func doneButton(_ sender: UIButton)
     {
         self.shotPopUp.removeFromSuperview()
+        do
+        {
+            audioPlayer = try AVAudioPlayer(contentsOf: buttonPress!)
+            audioPlayer.play()
+        }
+        catch
+        {
+            
+        }
     }
     
     //update game state
@@ -199,6 +211,10 @@ class GameViewController: UIViewController {
         {
             //after final storm????
             clearGameState()
+            if miniShield.isEnabled == false
+            {
+                audioPlayer.stop()
+            }
             performSegue(withIdentifier: "segueGameToEnd", sender: nil)
         }
         
@@ -213,7 +229,8 @@ class GameViewController: UIViewController {
             global.checkDrinkTimer.invalidate()
             performSegue(withIdentifier: "segueToDeath", sender: nil)
         }
-        //check for shot
+        
+        //Check for shot
         if Int(global.overallTime) >= global.shotTime && global.doneShot == false
         {
             self.view.addSubview(shotPopUp)
@@ -228,6 +245,15 @@ class GameViewController: UIViewController {
         if miniShield.isEnabled == false
         {
             audioPlayer.stop()
+        }
+        do
+        {
+            audioPlayer = try AVAudioPlayer(contentsOf: buttonPress!)
+            audioPlayer.play()
+        }
+        catch
+        {
+            
         }
         performSegue(withIdentifier: "segueToHome", sender: nil)
     }

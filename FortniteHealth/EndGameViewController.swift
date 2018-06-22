@@ -7,11 +7,26 @@
 //
 
 import UIKit
+import AVFoundation
 
 class EndGameViewController: UIViewController {
+    
+    var audioPlayer = AVAudioPlayer()
+    
+    let buttonPress = Bundle.main.url(forResource: "buttonPress", withExtension: "mp3")
+    let victorySound = Bundle.main.url(forResource: "victorySoundFinal", withExtension: "mp3")
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        do
+        {
+            audioPlayer = try AVAudioPlayer(contentsOf: victorySound!)
+            audioPlayer.play()
+        }
+        catch
+        {
+            
+        }
 
         // Do any additional setup after loading the view.
     }
@@ -21,7 +36,17 @@ class EndGameViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func buttonHome(_ sender: UIButton) {
+    @IBAction func buttonHome(_ sender: UIButton)
+    {
+        do
+        {
+            audioPlayer = try AVAudioPlayer(contentsOf: buttonPress!)
+            audioPlayer.play()
+        }
+        catch
+        {
+            
+        }
         performSegue(withIdentifier: "segueEndToHome", sender: nil)
     }
     

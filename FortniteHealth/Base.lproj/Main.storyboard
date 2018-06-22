@@ -222,11 +222,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" alpha="0.65000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cross" translatesAutoresizingMaskIntoConstraints="NO" id="GLm-QB-nf6">
-                                <rect key="frame" x="68" y="181" width="240" height="413"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="youDied" translatesAutoresizingMaskIntoConstraints="NO" id="rAV-RA-4Lp">
                                 <rect key="frame" x="68" y="84" width="240" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -247,6 +242,11 @@
                                     <action selector="reviveButton:" destination="3Cf-UG-hHf" eventType="touchUpInside" id="0wa-RR-UCt"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" alpha="0.65000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cross" translatesAutoresizingMaskIntoConstraints="NO" id="GLm-QB-nf6">
+                                <rect key="frame" x="68" y="181" width="240" height="413"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="5kr-Tv-Rqf"/>
@@ -268,6 +268,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="deathBackground" translatesAutoresizingMaskIntoConstraints="NO" id="jB5-th-fEX">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2UU-95-8Dd">
                                 <rect key="frame" x="148" y="619" width="78" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -276,6 +280,15 @@
                                     <action selector="buttonHome:" destination="9CN-7w-qOM" eventType="touchUpInside" id="uCe-ou-7i4"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="endGameImage" translatesAutoresizingMaskIntoConstraints="NO" id="e7Z-Q3-sTr">
+                                <rect key="frame" x="127" y="177" width="120" height="413"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gameOver" translatesAutoresizingMaskIntoConstraints="NO" id="r4J-eg-dbN">
+                                <rect key="frame" x="62" y="84" width="250" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="EAk-G6-uTv"/>
@@ -286,7 +299,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v8c-fF-5Bw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2140" y="132"/>
+            <point key="canvasLocation" x="2140" y="131.52709359605913"/>
         </scene>
     </scenes>
     <resources>
@@ -296,8 +309,10 @@
         <image name="d72564deb42d9a12610bcdc31963247d" width="78" height="29"/>
         <image name="deathBackground" width="1920" height="1080"/>
         <image name="done" width="71" height="30"/>
+        <image name="endGameImage" width="61" height="190"/>
         <image name="fortniteHealthBackground" width="1920" height="1080"/>
         <image name="gameLength" width="317" height="30"/>
+        <image name="gameOver" width="384" height="69"/>
         <image name="longGame" width="71" height="30"/>
         <image name="mediumGame" width="115" height="29"/>
         <image name="miniShield" width="512" height="512"/>
@@ -313,8 +328,7 @@
         <image name="youDied" width="313" height="69"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="f6T-ub-w8c"/>
-        <segue reference="d3V-36-30c"/>
-        <segue reference="DH6-BS-Xlq"/>
+        <segue reference="Z0W-T2-6nI"/>
+        <segue reference="SsI-ar-UCi"/>
     </inferredMetricsTieBreakers>
 </document>
