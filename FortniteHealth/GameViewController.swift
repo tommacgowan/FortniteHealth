@@ -11,8 +11,8 @@ import AVFoundation
 
 class GameViewController: UIViewController {
     
+    @IBOutlet weak var stormCounter: UIImageView!
     @IBOutlet var shotPopUp: UIView!
-    @IBOutlet weak var stormCount: UILabel!
     @IBOutlet weak var stormNotification: UIImageView!
     @IBOutlet weak var bigShield: UIButton!
     @IBOutlet weak var healthBarBackground: UIImageView!
@@ -47,7 +47,7 @@ class GameViewController: UIViewController {
         chugShield.alpha = 1
         if global.stormCount == 0
         {
-            stormNotification.alpha = 0
+            stormCounter.alpha = 0
         }
         
         //determine game type and setup storm settings
@@ -202,9 +202,10 @@ class GameViewController: UIViewController {
         
         if global.counter <= 0
         {
+            self.shotPopUp.removeFromSuperview()
             if miniShield.isEnabled == false
             {
-            audioPlayer.stop()
+                audioPlayer.stop()
             }
             global.gameTimer.invalidate()
             global.checkDrinkTimer.invalidate()
@@ -233,7 +234,34 @@ class GameViewController: UIViewController {
     {
         healthView.text = String("\(Int(round(global.counter)))/100")
         healthBar.setWidth(width: 2.5*CGFloat(global.counter))
-        stormCount.text = String("\(global.stormCount)")
+        if (global.stormCount == 0)
+        {
+            stormCounter.alpha = 0
+        }
+        else if (global.stormCount == 1)
+        {
+            let newImg: UIImage? = UIImage(named: "1stStorm")
+            stormCounter.image = newImg
+            stormCounter.alpha = 1
+        }
+        else if (global.stormCount == 2)
+        {
+            let newImg: UIImage? = UIImage(named: "2ndStorm")
+            stormCounter.image = newImg
+            stormCounter.alpha = 1
+        }
+        else if (global.stormCount == 3)
+        {
+            let newImg: UIImage? = UIImage(named: "3rdStorm")
+            stormCounter.image = newImg
+            stormCounter.alpha = 1
+        }
+        else if (global.stormCount == 4)
+        {
+            let newImg: UIImage? = UIImage(named: "finalStorm")
+            stormCounter.image = newImg
+            stormCounter.alpha = 1
+        }
     }
     
     func drink(type: String)

@@ -142,13 +142,10 @@
                                     <action selector="chugShield:" destination="ZqW-Pf-v8t" eventType="touchUpInside" id="fAP-KP-J3R"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Stb-bJ-mIe">
-                                <rect key="frame" x="77" y="162" width="42" height="21"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gkb-1I-92K">
+                                <rect key="frame" x="129" y="144" width="116" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="bH1-u9-9di"/>
@@ -162,7 +159,7 @@
                         <outlet property="homeButton" destination="OCe-b8-oye" id="p2y-MZ-T8l"/>
                         <outlet property="miniShield" destination="5Q6-aF-AkE" id="edc-0X-Nfh"/>
                         <outlet property="shotPopUp" destination="qvl-IO-8AS" id="pIN-ei-ksk"/>
-                        <outlet property="stormCount" destination="Stb-bJ-mIe" id="gzY-m9-IVD"/>
+                        <outlet property="stormCounter" destination="gkb-1I-92K" id="iIE-1C-5Je"/>
                         <outlet property="stormNotification" destination="CTj-cY-Tio" id="6mS-qI-D6K"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="segueToHome" id="DH6-BS-Xlq"/>
                         <segue destination="3Cf-UG-hHf" kind="show" identifier="segueToDeath" id="f6T-ub-w8c"/>
@@ -225,7 +222,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" alpha="0.65000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cross" translatesAutoresizingMaskIntoConstraints="NO" id="GLm-QB-nf6">
-                                <rect key="frame" x="68" y="181" width="240" height="450"/>
+                                <rect key="frame" x="68" y="181" width="240" height="413"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
@@ -233,20 +230,20 @@
                                 <rect key="frame" x="68" y="84" width="240" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFI-Rb-deu">
-                                <rect key="frame" x="68" y="667" width="91" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="reviveButton"/>
-                                <connections>
-                                    <action selector="reviveButton:" destination="3Cf-UG-hHf" eventType="touchUpInside" id="0wa-RR-UCt"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gIR-30-5op">
-                                <rect key="frame" x="230" y="666" width="78" height="29"/>
+                                <rect key="frame" x="230" y="618" width="78" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="d72564deb42d9a12610bcdc31963247d"/>
                                 <connections>
                                     <action selector="homeButton:" destination="3Cf-UG-hHf" eventType="touchUpInside" id="Nyj-9W-5f8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFI-Rb-deu">
+                                <rect key="frame" x="68" y="618" width="91" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="reviveButton"/>
+                                <connections>
+                                    <action selector="reviveButton:" destination="3Cf-UG-hHf" eventType="touchUpInside" id="0wa-RR-UCt"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -260,7 +257,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbX-vh-0Cv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1391.2" y="133.00492610837438"/>
+            <point key="canvasLocation" x="1391.2" y="132.68365817091455"/>
         </scene>
     </scenes>
     <resources>

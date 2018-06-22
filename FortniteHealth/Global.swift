@@ -30,7 +30,7 @@ class Global
     var isPause = true
     var hasShot: Int = 0
     var shotTime = 0
-    var doneShot = false
+    var doneShot = true
     
     
 }
