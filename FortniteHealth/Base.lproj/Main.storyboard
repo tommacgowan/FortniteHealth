@@ -174,15 +174,35 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O9T-VL-Liu">
-                            <rect key="frame" x="171" y="508" width="56" height="23"/>
+                            <rect key="frame" x="171" y="591" width="56" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="done"/>
                             <connections>
                                 <action selector="doneButton:" destination="ZqW-Pf-v8t" eventType="touchUpInside" id="WGE-tm-5Hp"/>
                             </connections>
                         </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="text1" translatesAutoresizingMaskIntoConstraints="NO" id="9ra-pe-8dq">
+                            <rect key="frame" x="79" y="241" width="240" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="text2" translatesAutoresizingMaskIntoConstraints="NO" id="CDJ-FE-zbu">
+                            <rect key="frame" x="79" y="279" width="240" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="text3" translatesAutoresizingMaskIntoConstraints="NO" id="aut-oV-zqH">
+                            <rect key="frame" x="79" y="317" width="240" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="text4" translatesAutoresizingMaskIntoConstraints="NO" id="HmT-3p-n9w">
+                            <rect key="frame" x="79" y="429" width="240" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="text5" translatesAutoresizingMaskIntoConstraints="NO" id="mJ2-Aa-AI5">
+                            <rect key="frame" x="79" y="467" width="240" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="shotTimeRed" translatesAutoresizingMaskIntoConstraints="NO" id="dPt-cd-ceu">
-                            <rect key="frame" x="135" y="358" width="128" height="31"/>
+                            <rect key="frame" x="124" y="139" width="150" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                     </subviews>
@@ -259,6 +279,11 @@
         <image name="shortGame" width="89" height="29"/>
         <image name="shotTimeRed" width="145" height="29"/>
         <image name="stormNotification" width="376" height="30"/>
+        <image name="text1" width="320" height="30"/>
+        <image name="text2" width="237" height="30"/>
+        <image name="text3" width="183" height="30"/>
+        <image name="text4" width="362" height="30"/>
+        <image name="text5" width="183" height="30"/>
         <image name="youDied" width="313" height="69"/>
     </resources>
     <inferredMetricsTieBreakers>
