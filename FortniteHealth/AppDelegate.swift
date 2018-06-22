@@ -181,7 +181,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 {
                 self.requestNotification(identifier: "notifyFourthStorm", title: "Storm Warning", body: "You've entered the final storm", delay: delayStorm4)
                 }
-                if delayHealthWarning > 0
+                if delayHealthWarning > 0 && Double(delayHealthWarning) < delayGameEnd - 5
                 {
                 self.requestNotification(identifier: "notifyLowHealth", title: "Health Warning", body: "You're on low health", delay: Double(delayHealthWarning))
                 }
