@@ -36,7 +36,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
+        global.gameOn = true
         global.isPause = false
         healthBar.setWidth(width: 2.5*CGFloat(global.counter))
         global.counter = global.startingHealth
@@ -56,7 +56,7 @@ class GameViewController: UIViewController {
         if global.gameType == "short"
         {
            //setup for testing purposes atm
-            global.stormTimes = [global.stormStart, 10/*480*/, 20/*720*/, 30/*960*/, 100/*1200*/]
+            global.stormTimes = [global.stormStart, 10/*480*/, 20/*720*/, 30/*960*/, 60/*1200*/]
             global.stormDamages = [0, 1/*0.01*/, 1/*0.02*/, 1/*0.05*/, 1/*0.1*/]
         }
         else if global.gameType == "medium"
@@ -78,15 +78,14 @@ class GameViewController: UIViewController {
             if global.hasShot == 1
             {
                 global.shotTime = Int(arc4random_uniform(UInt32(global.stormTimes[4])))
-                    global.doneShot = false
-                //NSLog("Has shot at %d",global.shotTime)
+                global.doneShot = false
+                NSLog("Has shot at %d",global.shotTime)
             }
             else
             {
                 //NSLog("No Shot this time")
             }
         }
-        
         global.gameTimer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: (#selector(GameViewController.updateGameState)), userInfo: nil, repeats: true)
         global.checkDrinkTimer = Timer.scheduledTimer(timeInterval: 0.3, target:self, selector: (#selector(GameViewController.checkDrink)), userInfo: nil, repeats: true)
     }

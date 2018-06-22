@@ -19,6 +19,7 @@ class DeathViewController: UIViewController {
         super.viewDidLoad()
         
         global.isPause = true
+        global.gameOn = false
         do
         {
             audioPlayer = try AVAudioPlayer(contentsOf: deathSound!)

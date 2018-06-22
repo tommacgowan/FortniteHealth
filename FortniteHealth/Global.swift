@@ -32,6 +32,7 @@ class Global
     var shotTime = 0
     var doneShot = true
     var fromBackground = false
+    var gameOn = false
     
     
 }

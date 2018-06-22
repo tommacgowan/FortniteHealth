@@ -19,6 +19,7 @@ class StartViewController: UIViewController {
     //SETUP
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         do{
             try audioSession.setCategory(AVAudioSessionCategoryAmbient)
         }catch{
@@ -26,6 +27,7 @@ class StartViewController: UIViewController {
         }
         global.hasShot = Int(arc4random_uniform(5))
         global.revived = false
+        global.gameOn = false
         // Do any additional setup after loading the view, typically from a nib.
     }
     override func didReceiveMemoryWarning() {

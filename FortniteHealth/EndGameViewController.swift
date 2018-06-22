@@ -18,6 +18,7 @@ class EndGameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        global.gameOn = true
         do
         {
             audioPlayer = try AVAudioPlayer(contentsOf: victorySound!)
