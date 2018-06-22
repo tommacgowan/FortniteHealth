@@ -22,12 +22,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v4S-4c-MGX">
-                                <rect key="frame" x="140" y="249" width="94" height="29"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gameLength" translatesAutoresizingMaskIntoConstraints="NO" id="sg8-em-11z">
+                                <rect key="frame" x="67" y="96" width="240" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="shortGame"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5wi-Ie-1TM">
+                                <rect key="frame" x="148" y="379" width="79" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="longGame"/>
                                 <connections>
-                                    <action selector="shortButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vYH-rg-nIc"/>
+                                    <action selector="longButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hMe-mm-OKV"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bgy-rK-4Ch">
@@ -38,18 +42,14 @@
                                     <action selector="mediumButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2bg-v8-I3s"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5wi-Ie-1TM">
-                                <rect key="frame" x="148" y="379" width="79" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v4S-4c-MGX">
+                                <rect key="frame" x="140" y="249" width="94" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="longGame"/>
+                                <state key="normal" image="shortGame"/>
                                 <connections>
-                                    <action selector="longButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hMe-mm-OKV"/>
+                                    <action selector="shortButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vYH-rg-nIc"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gameLength" translatesAutoresizingMaskIntoConstraints="NO" id="sg8-em-11z">
-                                <rect key="frame" x="67" y="96" width="240" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -70,7 +70,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fortniteHealthBackground" translatesAutoresizingMaskIntoConstraints="NO" id="asb-UN-a0b">
+                            <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fortniteHealthBackground" translatesAutoresizingMaskIntoConstraints="NO" id="YB3-e7-YXe">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -329,6 +329,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Z0W-T2-6nI"/>
-        <segue reference="SsI-ar-UCi"/>
+        <segue reference="DH6-BS-Xlq"/>
     </inferredMetricsTieBreakers>
 </document>

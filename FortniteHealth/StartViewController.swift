@@ -13,11 +13,17 @@ class StartViewController: UIViewController {
     
     let buttonPress = Bundle.main.url(forResource: "buttonPress", withExtension: "mp3")
     var audioPlayer = AVAudioPlayer()
+    var audioSession = AVAudioSession.sharedInstance()
 
     
     //SETUP
     override func viewDidLoad() {
         super.viewDidLoad()
+        do{
+            try audioSession.setCategory(AVAudioSessionCategoryAmbient)
+        }catch{
+            
+        }
         global.hasShot = Int(arc4random_uniform(5))
         global.revived = false
         // Do any additional setup after loading the view, typically from a nib.
@@ -44,6 +50,7 @@ class StartViewController: UIViewController {
     }
     @IBAction func mediumButton(_ sender: UIButton)
     {
+        global.stormStart = Int(arc4random_uniform(301))
         global.gameType = "medium"
         do
         {
@@ -55,7 +62,6 @@ class StartViewController: UIViewController {
             
         }
         performSegue(withIdentifier: "segueToGame", sender: nil)
-        global.stormStart = Int(arc4random_uniform(301))
     }
     @IBAction func longButton(_ sender: UIButton)
     {
