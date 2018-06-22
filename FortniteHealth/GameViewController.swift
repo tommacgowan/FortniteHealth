@@ -23,12 +23,11 @@ class GameViewController: UIViewController {
     @IBOutlet weak var chugShield: UIButton!
     
     var audioPlayer = AVAudioPlayer()
-    
     let buttonPress = Bundle.main.url(forResource: "buttonPress", withExtension: "mp3")
     let miniShieldSound = Bundle.main.url(forResource: "miniShield", withExtension: "mp3")
     let bigShieldSound = Bundle.main.url(forResource: "bigShield", withExtension: "mp3")
     let chugJugSound = Bundle.main.url(forResource: "chugJug", withExtension: "mp3")
-    
+    var audioSession = AVAudioSession.sharedInstance()
     var miniDrinkTime: Double = 2.2
     var bigDrinkTime: Double = 5.3
     var chugDrinkTime: Double = 15
@@ -37,6 +36,14 @@ class GameViewController: UIViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        do{
+            try audioSession.setCategory(AVAudioSessionCategoryAmbient)
+        }catch{
+            
+        }
+        
+        
         global.isPause = false
         healthBar.setWidth(width: 2.5*CGFloat(global.counter))
         global.counter = global.startingHealth
