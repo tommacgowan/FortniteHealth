@@ -48,6 +48,7 @@ class GameViewController: UIViewController {
         if global.stormCount == 0
         {
             stormCounter.alpha = 0
+            stormNotification.alpha = 0
         }
         
         //determine game type and setup storm settings
@@ -162,6 +163,7 @@ class GameViewController: UIViewController {
         if Int(global.overallTime) <= global.stormTimes[0]
         {
             global.stormCount = 0
+            stormNotification.alpha = 0
             //before storm starts
         }
         else if Int(global.overallTime) <= global.stormTimes[1]
@@ -197,7 +199,7 @@ class GameViewController: UIViewController {
         {
             //after final storm????
             clearGameState()
-            performSegue(withIdentifier: "segueToHome", sender: nil)
+            performSegue(withIdentifier: "segueGameToEnd", sender: nil)
         }
         
         if global.counter <= 0
@@ -330,6 +332,7 @@ class GameViewController: UIViewController {
     func clearGameState()
     {
         global.drinking = false
+        global.doneShot = true
         global.drinkType = ""
         global.gameType = ""
         global.overallTime = 0

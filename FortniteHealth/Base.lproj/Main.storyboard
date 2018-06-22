@@ -163,6 +163,7 @@
                         <outlet property="stormNotification" destination="CTj-cY-Tio" id="6mS-qI-D6K"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="segueToHome" id="DH6-BS-Xlq"/>
                         <segue destination="3Cf-UG-hHf" kind="show" identifier="segueToDeath" id="f6T-ub-w8c"/>
+                        <segue destination="9CN-7w-qOM" kind="show" identifier="segueGameToEnd" id="lRw-k6-y5J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jcJ-HL-xYQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -258,6 +259,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbX-vh-0Cv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1391.2" y="132.68365817091455"/>
+        </scene>
+        <!--End Game View Controller-->
+        <scene sceneID="S3X-6H-m59">
+            <objects>
+                <viewController id="9CN-7w-qOM" customClass="EndGameViewController" customModule="FortniteHealth" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sXv-ny-V2q">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2UU-95-8Dd">
+                                <rect key="frame" x="148" y="619" width="78" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="d72564deb42d9a12610bcdc31963247d"/>
+                                <connections>
+                                    <action selector="buttonHome:" destination="9CN-7w-qOM" eventType="touchUpInside" id="uCe-ou-7i4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="EAk-G6-uTv"/>
+                    </view>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="segueEndToHome" id="SsI-ar-UCi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v8c-fF-5Bw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2140" y="132"/>
         </scene>
     </scenes>
     <resources>
