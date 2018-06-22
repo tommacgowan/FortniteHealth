@@ -56,8 +56,8 @@ class GameViewController: UIViewController {
         if global.gameType == "short"
         {
            //setup for testing purposes atm
-            global.stormTimes = [global.stormStart, 10/*480*/, 20/*720*/, 30/*960*/, 50/*1200*/]
-            global.stormDamages = [0, 2/*0.01*/, 3/*0.02*/, 4/*0.05*/, 5/*0.1*/]
+            global.stormTimes = [global.stormStart, 10/*480*/, 20/*720*/, 30/*960*/, 100/*1200*/]
+            global.stormDamages = [0, 1/*0.01*/, 1/*0.02*/, 1/*0.05*/, 1/*0.1*/]
         }
         else if global.gameType == "medium"
         {

@@ -31,6 +31,7 @@ class Global
     var hasShot: Int = 0
     var shotTime = 0
     var doneShot = true
+    var fromBackground = false
     
     
 }
