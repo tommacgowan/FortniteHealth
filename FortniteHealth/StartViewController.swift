@@ -26,6 +26,7 @@ class StartViewController: UIViewController {
             
         }
         global.hasShot = Int(arc4random_uniform(5))
+        global.hasBoogie = Int(arc4random_uniform(4))
         global.revived = false
         global.gameOn = false
         // Do any additional setup after loading the view, typically from a nib.

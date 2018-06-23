@@ -11,6 +11,7 @@ import AVFoundation
 
 class GameViewController: UIViewController {
     
+    @IBOutlet var boogiePopUp: UIView!
     @IBOutlet weak var stormCounter: UIImageView!
     @IBOutlet var shotPopUp: UIView!
     @IBOutlet weak var stormNotification: UIImageView!
@@ -28,10 +29,10 @@ class GameViewController: UIViewController {
     let miniShieldSound = Bundle.main.url(forResource: "miniShield", withExtension: "mp3")
     let bigShieldSound = Bundle.main.url(forResource: "bigShield", withExtension: "mp3")
     let chugJugSound = Bundle.main.url(forResource: "chugJug", withExtension: "mp3")
+    
     var miniDrinkTime: Double = 2.2
     var bigDrinkTime: Double = 5.3
     var chugDrinkTime: Double = 15
-    
     
     override func viewDidLoad()
     {
@@ -86,6 +87,13 @@ class GameViewController: UIViewController {
                 NSLog("No Shot this time")
             }
         }
+        
+        if global.hasBoogie == 1
+        {
+            global.boogieTime = Int(arc4random_uniform(UInt32(global.stormTimes[4])))
+            global.doneBoogie = false
+        }
+        
         global.gameTimer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: (#selector(GameViewController.updateGameState)), userInfo: nil, repeats: true)
         global.checkDrinkTimer = Timer.scheduledTimer(timeInterval: 0.3, target:self, selector: (#selector(GameViewController.checkDrink)), userInfo: nil, repeats: true)
     }
@@ -166,6 +174,20 @@ class GameViewController: UIViewController {
         }
     }
     
+    @IBAction func doneButton2(_ sender: UIButton)
+    {
+        self.boogiePopUp.removeFromSuperview()
+        do
+        {
+            audioPlayer = try AVAudioPlayer(contentsOf: buttonPress!)
+            audioPlayer.play()
+        }
+        catch
+        {
+            
+        }
+    }
+    
     //update game state
     @objc func updateGameState ()
     {
@@ -233,6 +255,14 @@ class GameViewController: UIViewController {
         if Int(global.overallTime) >= global.shotTime && global.doneShot == false
         {
             self.view.addSubview(shotPopUp)
+            shotPopUp.center = self.view.center
+            global.doneShot = true
+        }
+        
+        //Check for boogie
+        if Int(global.overallTime) >= global.boogieTime && global.doneBoogie == false
+        {
+            self.view.addSubview(boogiePopUp)
             shotPopUp.center = self.view.center
             global.doneShot = true
         }

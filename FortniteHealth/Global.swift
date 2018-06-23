@@ -33,6 +33,9 @@ class Global
     var doneShot = true
     var fromBackground = false
     var gameOn = false
+    var boogieTime = 0
+    var hasBoogie: Int = 0
+    var doneBoogie = true
     
     
 }
