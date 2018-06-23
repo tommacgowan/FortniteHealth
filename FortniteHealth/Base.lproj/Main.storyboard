@@ -180,6 +180,30 @@
                                 <action selector="doneButton2:" destination="ZqW-Pf-v8t" eventType="touchUpInside" id="6nL-HE-of6"/>
                             </connections>
                         </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="boogieText2" translatesAutoresizingMaskIntoConstraints="NO" id="JpW-ck-bkT">
+                            <rect key="frame" x="79" y="386" width="240" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="boogieText3" translatesAutoresizingMaskIntoConstraints="NO" id="htH-J7-rr6">
+                            <rect key="frame" x="79" y="424" width="240" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="boogieText4" translatesAutoresizingMaskIntoConstraints="NO" id="Jbj-Xj-K62">
+                            <rect key="frame" x="124" y="462" width="150" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="boogieText6" translatesAutoresizingMaskIntoConstraints="NO" id="m5u-eE-4sN">
+                            <rect key="frame" x="79" y="242" width="240" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="boogieText7" translatesAutoresizingMaskIntoConstraints="NO" id="ley-6c-aib">
+                            <rect key="frame" x="124" y="280" width="150" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="boogieText5" translatesAutoresizingMaskIntoConstraints="NO" id="zCK-nu-FtS">
+                            <rect key="frame" x="64" y="125" width="270" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" red="1" green="0.81386487446072131" blue="0.095986096520402131" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <viewLayoutGuide key="safeArea" id="r96-he-N2h"/>
@@ -217,7 +241,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="shotTimeRed" translatesAutoresizingMaskIntoConstraints="NO" id="dPt-cd-ceu">
-                            <rect key="frame" x="124" y="139" width="150" height="40"/>
+                            <rect key="frame" x="124" y="128" width="150" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                     </subviews>
@@ -321,6 +345,12 @@
     </scenes>
     <resources>
         <image name="bigShield" width="512" height="512"/>
+        <image name="boogieText2" width="281" height="30"/>
+        <image name="boogieText3" width="249" height="30"/>
+        <image name="boogieText4" width="148" height="40"/>
+        <image name="boogieText5" width="506" height="50"/>
+        <image name="boogieText6" width="298" height="30"/>
+        <image name="boogieText7" width="139" height="39"/>
         <image name="chugJug" width="512" height="512"/>
         <image name="cross" width="134" height="194"/>
         <image name="d72564deb42d9a12610bcdc31963247d" width="78" height="29"/>
@@ -345,8 +375,7 @@
         <image name="youDied" width="313" height="69"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="f6T-ub-w8c"/>
-        <segue reference="d3V-36-30c"/>
+        <segue reference="Z0W-T2-6nI"/>
         <segue reference="DH6-BS-Xlq"/>
     </inferredMetricsTieBreakers>
 </document>
