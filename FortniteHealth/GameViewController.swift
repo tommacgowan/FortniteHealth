@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import Foundation
 
 class GameViewController: UIViewController {
     
@@ -37,6 +38,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
         global.gameOn = true
         global.isPause = false
         healthBar.setWidth(width: 2.5*CGFloat(global.counter))
@@ -47,53 +49,11 @@ class GameViewController: UIViewController {
         miniShield.alpha = 1
         bigShield.alpha = 1
         chugShield.alpha = 1
-        if global.stormCount == 0
-        {
-            stormCounter.alpha = 0
-            stormNotification.alpha = 0
-        }
         
-        //determine game type and setup storm settings
-        if global.gameType == "short"
-        {
-           //setup for testing purposes atm
-            global.stormTimes = [global.stormStart, 10/*480*/, 20/*720*/, 30/*960*/, 200/*1200*/]
-            global.stormDamages = [0, 1/*0.01*/, 1/*0.02*/, 2/*0.05*/, 2/*0.1*/]
-        }
-        else if global.gameType == "medium"
-        {
-            
-            global.stormTimes = [global.stormStart, 1440, 2160, 2880, 3600]
-            global.stormDamages = [0, 0.0365, 0.0731, 0.183, 0.365]
-        }
-        else if global.gameType == "long"
-        {
-            
-            global.stormTimes = [global.stormStart, 2880, 4320, 5760, 7200]
-            global.stormDamages = [0, 0.0256, 0.512, 0.128, 0.256]
-        }
+        stormSetup()
+        setBoogieShot()
         
-        //Decides when shot occurs
-        if global.revived == false
-        {
-            if global.hasShot == 1
-            {
-                global.shotTime = Int(arc4random_uniform(UInt32(global.stormTimes[4])))
-                global.doneShot = false
-                NSLog("Has shot at %d",global.shotTime)
-            }
-            else
-            {
-                NSLog("No Shot this time")
-            }
-        }
-        
-        if global.hasBoogie == 1
-        {
-            global.boogieTime = Int(arc4random_uniform(UInt32(global.stormTimes[4])))
-            global.doneBoogie = false
-        }
-        
+        //begin timers
         global.gameTimer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: (#selector(GameViewController.updateGameState)), userInfo: nil, repeats: true)
         global.checkDrinkTimer = Timer.scheduledTimer(timeInterval: 0.3, target:self, selector: (#selector(GameViewController.checkDrink)), userInfo: nil, repeats: true)
     }
@@ -251,21 +211,7 @@ class GameViewController: UIViewController {
             performSegue(withIdentifier: "segueToDeath", sender: nil)
         }
         
-        //Check for shot
-        if Int(global.overallTime) >= global.shotTime && global.doneShot == false
-        {
-            self.view.addSubview(shotPopUp)
-            shotPopUp.center = self.view.center
-            global.doneShot = true
-        }
-        
-        //Check for boogie
-        if Int(global.overallTime) >= global.boogieTime && global.doneBoogie == false
-        {
-            self.view.addSubview(boogiePopUp)
-            shotPopUp.center = self.view.center
-            global.doneShot = true
-        }
+        checkBoogieShot()
     }
     
     
@@ -368,6 +314,7 @@ class GameViewController: UIViewController {
         bigShield.alpha = 0.5
         chugShield.alpha = 0.5
     }
+    
     @objc func checkDrink()
     {
         if (global.finishDrink < CFAbsoluteTimeGetCurrent()) && (global.drinking == true)
@@ -388,6 +335,7 @@ class GameViewController: UIViewController {
     {
         global.drinking = false
         global.doneShot = true
+        global.doneBoogie = true
         global.drinkType = ""
         global.gameType = ""
         global.overallTime = 0
@@ -397,5 +345,110 @@ class GameViewController: UIViewController {
         global.gameTimer.invalidate()
         global.checkDrinkTimer.invalidate()
         global.revived = false
+    }
+    
+    func setBoogieShot()
+    {
+        if global.revived == false
+        {
+            if global.hasShot == 1 && global.hasBoogie != 1 //shot only
+            {
+                global.shotTime = Int(arc4random_uniform(UInt32(global.stormTimes[4])))
+                global.doneShot = false
+                NSLog("Has shot at %d",global.shotTime)
+                NSLog("No Boogie this time")
+            }
+            else if global.hasBoogie == 1 && global.hasShot != 1 //boogie only
+            {
+                global.boogieTime = Int(arc4random_uniform(UInt32(global.stormTimes[4])))
+                global.doneBoogie = false
+                NSLog("No Shot this time")
+                NSLog("Has Boogie at %d",global.boogieTime)
+            }
+            else if global.hasBoogie == 1 && global.hasShot == 1 //both shot and boogie
+            {
+                var dif: Int = 0
+                while dif < 5 //TESTING difference needs to increase to approx 30 seconds
+                {
+                    global.boogieTime = Int(arc4random_uniform(UInt32(global.stormTimes[4])))
+                    global.shotTime = Int(arc4random_uniform(UInt32(global.stormTimes[4])))
+                    dif = Int(abs(global.shotTime - global.boogieTime))
+                }
+                global.doneBoogie = false
+                global.doneShot = false
+                NSLog("Has shot at %d",global.shotTime)
+                NSLog("Has Boogie at %d",global.boogieTime)
+            }
+            else
+            {
+                NSLog("No boogie or shot")
+            }
+        }
+    }
+    
+    func checkBoogieShot()
+    {
+        //if both boogie and shot are scheduled to display
+        if Int(global.overallTime) >= global.shotTime && global.doneShot == false && Int(global.overallTime) >= global.boogieTime && global.doneBoogie == false
+        {
+            displayPopUp(view: "shotPopUp")
+            displayPopUp(view: "boogiePopUp")
+        }
+        //If just shot
+        else if Int(global.overallTime) >= global.shotTime && global.doneShot == false
+        {
+            displayPopUp(view: "shotPopUp")
+        }
+        //if just boogie
+        else if Int(global.overallTime) >= global.boogieTime && global.doneBoogie == false
+        {
+            displayPopUp(view: "boogiePopUp")
+        }
+        
+    }
+    
+    func stormSetup()
+    {
+        if global.stormCount == 0
+        {
+            stormCounter.alpha = 0
+            stormNotification.alpha = 0
+        }
+        
+        //determine game type and setup storm settings
+        if global.gameType == "short"
+        {
+            //setup for testing purposes atm
+            global.stormTimes = [global.stormStart, 10/*480*/, 20/*720*/, 30/*960*/, 200/*1200*/]
+            global.stormDamages = [0, 1/*0.01*/, 1/*0.02*/, 2/*0.05*/, 2/*0.1*/]
+        }
+        else if global.gameType == "medium"
+        {
+            
+            global.stormTimes = [global.stormStart, 1440, 2160, 2880, 3600]
+            global.stormDamages = [0, 0.0365, 0.0731, 0.183, 0.365]
+        }
+        else if global.gameType == "long"
+        {
+            
+            global.stormTimes = [global.stormStart, 2880, 4320, 5760, 7200]
+            global.stormDamages = [0, 0.0256, 0.512, 0.128, 0.256]
+        }
+    }
+    
+    func displayPopUp(view: String)
+    {
+        if view == "shotPopUp"
+        {
+            self.view.addSubview(shotPopUp)
+            shotPopUp.center = self.view.center
+            global.doneShot = true
+        }
+        else if view == "boogiePopUp"
+        {
+            self.view.addSubview(boogiePopUp)
+            boogiePopUp.center = self.view.center
+            global.doneBoogie = true
+        }
     }
 }

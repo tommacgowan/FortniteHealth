@@ -102,28 +102,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let delayStorm2 = Double(global.stormTimes[1] - Int(global.overallTime))
         let delayStorm3 = Double(global.stormTimes[2] - Int(global.overallTime))
         let delayStorm4 = Double(global.stormTimes[3] - Int(global.overallTime))
+        //game end delay
         let delayGameEnd = Double(global.stormTimes[4] - Int(global.overallTime))
+        
+        //set shot delay to -1 (it should stay this was if no shot is issues this game)
         var delayShot: Double = -1
         if global.hasShot == 1
         {
             delayShot = Double(global.shotTime - Int(global.overallTime))
         }
-        /*
-        NSLog("delayStorms: %f %f %f %f", delayStorm1,delayStorm2,delayStorm3,delayStorm4)
-        NSLog("delayEndGame: %f", delayGameEnd)
-        NSLog("delayShot: %f", delayShot)
-         */
- 
- 
         
+        //set shot delay to -1 (it should stay this was if no shot is issues this game)
+        var delayBoogie: Double = -1
+        if global.hasShot == 1
+        {
+            delayBoogie = Double(global.boogieTime - Int(global.overallTime))
+        }
+        
+       
         var gameTime = Int(global.overallTime)
         var lifeLeft = global.counter
         var delayHealthWarning = 0
         var delayDeath = 0
         
-        
-        
-        if lifeLeft < 20 //dont notify if life left is under warning level already
+        if lifeLeft < 20 //dont notify if life left is under warning level already TESTING
         {
            delayHealthWarning = -1
         }
@@ -151,45 +153,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             else if gameTime > global.stormTimes[4]
             {
-                lifeLeft = 0
+                lifeLeft = 0 // if game ends
             }
             gameTime = gameTime + 1
             delayDeath = delayDeath + 1
-            if lifeLeft >= 20 //health level required for warning
+            if lifeLeft >= 20 //health level required for warning TESTING
             {
                 delayHealthWarning = delayHealthWarning + 1
             }
         }
        
        
-        
+        // If Notifications allowed
         center.getNotificationSettings { (settings) in
             if settings.authorizationStatus == .authorized
             {
-                // If Notifications allowed
-                if delayStorm1 > 0 //change these to soemthing like 30 so it doesnt notify as soon as they close the app
+                if delayStorm1 > 0 && delayStorm1 < Double(delayDeath)
                 {
                      self.requestNotification(identifier: "notifyFirstStorm", title: "Storm Warning", body: "You've entered the 1st storm", delay: delayStorm1)
                 }
-                if delayStorm2 > 0
+                if delayStorm2 > 0  && delayStorm2 < Double(delayDeath)
                 {
                     self.requestNotification(identifier: "notifySecondStorm", title: "Storm Warning", body: "You've entered the 2nd storm", delay: delayStorm2)
                 }
-                if delayStorm3 > 0
+                if delayStorm3 > 0  && delayStorm3 < Double(delayDeath)
                 {
                     self.requestNotification(identifier: "notifyThirdStorm", title: "Storm Warning", body: "You've entered the 3rd storm", delay: delayStorm3)
                 }
-                if delayStorm4 > 0
+                if delayStorm4 > 0  && delayStorm4 < Double(delayDeath)
                 {
                 self.requestNotification(identifier: "notifyFourthStorm", title: "Storm Warning", body: "You've entered the final storm", delay: delayStorm4)
                 }
                 if delayHealthWarning > 0 && Double(delayHealthWarning) < delayGameEnd - 5
                 {
-                self.requestNotification(identifier: "notifyLowHealth", title: "Health Warning", body: "You're on low health", delay: Double(delayHealthWarning))
+                    self.requestNotification(identifier: "notifyLowHealth", title: "Health Warning", body: "You're on low health", delay: Double(delayHealthWarning))
                 }
                 if delayShot > 0 && delayShot < Double(delayDeath)//dont change this though
                 {
                     self.requestNotification(identifier: "notifyShot", title: "Alert", body: "Its shot time", delay: Double(delayShot))
+                }
+                if delayBoogie > 0 && delayBoogie < Double(delayDeath)//dont change this though
+                {
+                    self.requestNotification(identifier: "notifyBoogie", title: "Alert", body: "You've been boogied", delay: Double(delayBoogie))
                 }
                 
                 self.requestNotification(identifier: "notifyGameEnd", title: "Alert", body: "The game just ended", delay: Double(delayGameEnd))

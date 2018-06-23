@@ -18,7 +18,7 @@ class DeathViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        global.isPause = true
+        global.isPause = false
         global.gameOn = false
         do
         {

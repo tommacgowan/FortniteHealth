@@ -345,6 +345,7 @@
         <image name="youDied" width="313" height="69"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="f6T-ub-w8c"/>
         <segue reference="d3V-36-30c"/>
         <segue reference="DH6-BS-Xlq"/>
     </inferredMetricsTieBreakers>
