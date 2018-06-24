@@ -12,6 +12,7 @@ import Foundation
 
 class GameViewController: UIViewController {
     
+    @IBOutlet var deathPopUp: UIView!
     @IBOutlet var boogiePopUp: UIView!
     @IBOutlet weak var stormCounter: UIImageView!
     @IBOutlet var shotPopUp: UIView!
@@ -26,6 +27,7 @@ class GameViewController: UIViewController {
     
     
     var audioPlayer = AVAudioPlayer()
+     let deathSound = Bundle.main.url(forResource: "deathSound", withExtension: "mp3")
     let buttonPress = Bundle.main.url(forResource: "buttonPress", withExtension: "mp3")
     let miniShieldSound = Bundle.main.url(forResource: "miniShield", withExtension: "mp3")
     let bigShieldSound = Bundle.main.url(forResource: "bigShield", withExtension: "mp3")
@@ -40,7 +42,7 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         global.gameOn = true
-        global.isPause = false
+        global.overallTime = 0
         healthBar.setWidth(width: 2.5*CGFloat(global.counter))
         global.counter = global.startingHealth
         miniShield.isEnabled = true
@@ -147,71 +149,72 @@ class GameViewController: UIViewController {
             
         }
     }
-    
+    //need to somehow only increament overalltime on player death.
     //update game state
     @objc func updateGameState ()
     {
-       
+        
         global.overallTime = global.overallTime + 1
-        if Int(global.overallTime) <= global.stormTimes[0]
+        if global.isDead == false
         {
-            global.stormCount = 0
-            stormNotification.alpha = 0
-            //before storm starts
-        }
-        else if Int(global.overallTime) <= global.stormTimes[1]
-        {
-            global.stormCount = 1
-            stormNotification.alpha = 1
-            global.damageStep = global.stormDamages[1]
-            global.counter = global.counter - global.damageStep
-            updateView()
-        }
-        else if Int(global.overallTime) <= global.stormTimes[2]
-        {
-            global.stormCount = 2
-            global.damageStep = global.stormDamages[2]
-            global.counter = global.counter - global.damageStep
-            updateView()
-        }
-        else if Int(global.overallTime) <= global.stormTimes[3]
-        {
-            global.stormCount = 3
-            global.damageStep = global.stormDamages[3]
-            global.counter = global.counter - global.damageStep
-            updateView()
-        }
-        else if Int(global.overallTime) < global.stormTimes[4]
-        {
-            global.stormCount = 4
-            global.damageStep = global.stormDamages[4]
-            global.counter = global.counter - global.damageStep
-            updateView()
-        }
-        else if Int(global.overallTime) >= global.stormTimes[4]
-        {
-            //after final storm????
-            clearGameState()
-            if miniShield.isEnabled == false
+            if Int(global.overallTime) <= global.stormTimes[0]
             {
-                audioPlayer.stop()
+                global.stormCount = 0
+                stormNotification.alpha = 0
+                //before storm starts
             }
-            performSegue(withIdentifier: "segueGameToEnd", sender: nil)
-        }
-        
-        if global.counter <= 0
-        {
-            self.shotPopUp.removeFromSuperview()
-            if miniShield.isEnabled == false
+            else if Int(global.overallTime) <= global.stormTimes[1]
             {
-                audioPlayer.stop()
+                global.stormCount = 1
+                stormNotification.alpha = 1
+                global.damageStep = global.stormDamages[1]
+                global.counter = global.counter - global.damageStep
+                updateView()
             }
-            global.gameTimer.invalidate()
-            global.checkDrinkTimer.invalidate()
-            performSegue(withIdentifier: "segueToDeath", sender: nil)
+            else if Int(global.overallTime) <= global.stormTimes[2]
+            {
+                global.stormCount = 2
+                global.damageStep = global.stormDamages[2]
+                global.counter = global.counter - global.damageStep
+                updateView()
+            }
+            else if Int(global.overallTime) <= global.stormTimes[3]
+            {
+                global.stormCount = 3
+                global.damageStep = global.stormDamages[3]
+                global.counter = global.counter - global.damageStep
+                updateView()
+            }
+            else if Int(global.overallTime) < global.stormTimes[4]
+            {
+                global.stormCount = 4
+                global.damageStep = global.stormDamages[4]
+                global.counter = global.counter - global.damageStep
+                updateView()
+            }
+            else if Int(global.overallTime) >= global.stormTimes[4]
+            {
+                //after final storm????
+                clearGameState()
+                if miniShield.isEnabled == false
+                {
+                    audioPlayer.stop()
+                }
+                performSegue(withIdentifier: "segueGameToEnd", sender: nil)
+            }
+            if global.counter <= 0
+            {
+                global.counter = 100
+                self.shotPopUp.removeFromSuperview()
+                if miniShield.isEnabled == false
+                {
+                    audioPlayer.stop()
+                }
+                displayPopUp(view: "death")
+            }
         }
-        
         checkBoogieShot()
+        //NSLog("GameTime = %f | Counter = %f", global.overallTime, global.counter)
     }
     
     
@@ -235,6 +238,10 @@ class GameViewController: UIViewController {
     
     func updateView()
     {
+        if global.counter < 0
+        {
+            global.counter = 0
+        }
         healthView.text = String("\(Int(round(global.counter)))/100")
         healthBar.setWidth(width: 2.5*CGFloat(global.counter))
         if (global.stormCount == 0)
@@ -345,6 +352,7 @@ class GameViewController: UIViewController {
         global.gameTimer.invalidate()
         global.checkDrinkTimer.invalidate()
         global.revived = false
+        global.isDead = false
     }
     
     func setBoogieShot()
@@ -368,7 +376,7 @@ class GameViewController: UIViewController {
             else if global.hasBoogie == 1 && global.hasShot == 1 //both shot and boogie
             {
                 var dif: Int = 0
-                while dif < 5 //TESTING difference needs to increase to approx 30 seconds
+                while dif < global.minDif //TESTING difference needs to increase to approx 30 seconds
                 {
                     global.boogieTime = Int(arc4random_uniform(UInt32(global.stormTimes[4])))
                     global.shotTime = Int(arc4random_uniform(UInt32(global.stormTimes[4])))
@@ -391,18 +399,60 @@ class GameViewController: UIViewController {
         //if both boogie and shot are scheduled to display
         if Int(global.overallTime) >= global.shotTime && global.doneShot == false && Int(global.overallTime) >= global.boogieTime && global.doneBoogie == false
         {
-            displayPopUp(view: "shotPopUp")
-            displayPopUp(view: "boogiePopUp")
+            if global.boogieTime < global.shotTime
+            {
+                if global.isDead == true
+                {
+                    global.doneBoogie = true
+                }
+                else
+                {
+                    //NSLog("1")
+                    displayPopUp(view: "boogiePopUp")
+                    global.doneShot = true
+                }
+            }
+            else
+            {
+                if global.isDead == true
+                {
+                    global.doneShot = true
+                }
+                else
+                {
+                    //NSLog("2")
+                    displayPopUp(view: "boogiePopUp")
+                    global.doneBoogie = true
+                }
+            }
         }
         //If just shot
         else if Int(global.overallTime) >= global.shotTime && global.doneShot == false
         {
-            displayPopUp(view: "shotPopUp")
+            if global.isDead == true
+            {
+                global.doneShot = true
+            }
+            else
+            {
+                //NSLog("3")
+                displayPopUp(view: "shotPopUp")
+            }
+            
         }
         //if just boogie
         else if Int(global.overallTime) >= global.boogieTime && global.doneBoogie == false
         {
-            displayPopUp(view: "boogiePopUp")
+            if global.isDead == true
+            {
+                global.doneBoogie = true
+            }
+            else
+            {
+                //NSLog("4")
+                displayPopUp(view: "boogiePopUp")
+            }
+            
         }
         
     }
@@ -450,5 +500,58 @@ class GameViewController: UIViewController {
             boogiePopUp.center = self.view.center
             global.doneBoogie = true
         }
+        else if view == "death"
+        {
+            self.view.addSubview(deathPopUp)
+            deathPopUp.center = self.view.center
+            global.isDead = true
+            //global.gameTimer.invalidate()
+            //global.checkDrinkTimer.invalidate()
+            do
+            {
+                audioPlayer = try AVAudioPlayer(contentsOf: deathSound!)
+                audioPlayer.play()
+            }
+            catch
+            {
+                
+            }
+        }
     }
+    
+    @IBAction func reviveButton(_ sender: UIButton)
+    {
+        global.revived = true
+        global.counter = 100
+        updateView()
+        global.isDead = false
+        self.deathPopUp.removeFromSuperview()
+        do
+        {
+            audioPlayer = try AVAudioPlayer(contentsOf: buttonPress!)
+            audioPlayer.play()
+        }
+        catch
+        {
+            
+        }
+        
+    }
+    
+    @IBAction func homeButtonDeath(_ sender: Any)
+    {
+        clearGameState()
+        do
+        {
+            audioPlayer = try AVAudioPlayer(contentsOf: buttonPress!)
+            audioPlayer.play()
+        }
+        catch
+        {
+            
+        }
+        performSegue(withIdentifier: "segueToHome", sender: nil)
+        
+    }
+    
 }

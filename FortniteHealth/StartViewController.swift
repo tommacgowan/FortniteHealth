@@ -11,6 +11,9 @@ import AVFoundation
 
 class StartViewController: UIViewController {
     
+    @IBOutlet weak var shotSwitch: UISwitch!
+    @IBOutlet weak var boogieSwitch: UISwitch!
+    
     let buttonPress = Bundle.main.url(forResource: "buttonPress", withExtension: "mp3")
     var audioPlayer = AVAudioPlayer()
     var audioSession = AVAudioSession.sharedInstance()
@@ -25,8 +28,7 @@ class StartViewController: UIViewController {
         }catch{
             
         }
-        global.hasShot = Int(arc4random_uniform(5))
-        global.hasBoogie = Int(arc4random_uniform(4))
+        
         global.revived = false
         global.gameOn = false
         // Do any additional setup after loading the view, typically from a nib.
@@ -38,7 +40,9 @@ class StartViewController: UIViewController {
     
     @IBAction func shortButton(_ sender: UIButton)
     {
+        readSwitch()
         global.stormStart = Int(arc4random_uniform(4/*121*/))
+        global.minDif = 5 //TESTING minimum time difference between shot or boogie
         global.gameType = "short"
         do
         {
@@ -53,7 +57,9 @@ class StartViewController: UIViewController {
     }
     @IBAction func mediumButton(_ sender: UIButton)
     {
+        readSwitch()
         global.stormStart = Int(arc4random_uniform(301))
+        global.minDif = 100 //minimum time difference between shot or boogie
         global.gameType = "medium"
         do
         {
@@ -68,7 +74,9 @@ class StartViewController: UIViewController {
     }
     @IBAction func longButton(_ sender: UIButton)
     {
+        readSwitch()
         global.stormStart = Int(arc4random_uniform(481))
+        global.minDif = 500 //minimum time difference between shot or boogie
         global.gameType = "long"
         do
         {
@@ -80,6 +88,26 @@ class StartViewController: UIViewController {
             
         }
         performSegue(withIdentifier: "segueToGame", sender: nil)
+    }
+    
+    func readSwitch()
+    {
+        if shotSwitch.isOn
+        {
+            global.hasShot = Int(arc4random_uniform(5))
+        }
+        else
+        {
+            global.hasShot = 0
+        }
+        if boogieSwitch.isOn
+        {
+            global.hasBoogie = Int(arc4random_uniform(4))
+        }
+        else
+        {
+            global.hasBoogie = 0
+        }
     }
 }
     

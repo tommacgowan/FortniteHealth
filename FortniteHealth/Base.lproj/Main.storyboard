@@ -50,11 +50,35 @@
                                     <action selector="shortButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vYH-rg-nIc"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jRa-8w-qzp">
+                                <rect key="frame" x="116" y="474" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ce9-Fm-V3O">
+                                <rect key="frame" x="114" y="532" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Shot Enabled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKy-5V-G1q">
+                                <rect key="frame" x="192" y="484" width="102" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Boogie Enabled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wek-j4-iHp">
+                                <rect key="frame" x="192" y="538" width="120" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="boogieSwitch" destination="Ce9-Fm-V3O" id="2Hw-sz-dtn"/>
+                        <outlet property="shotSwitch" destination="jRa-8w-qzp" id="puM-zX-7oP"/>
                         <segue destination="ZqW-Pf-v8t" kind="show" identifier="segueToGame" id="Z0W-T2-6nI"/>
                     </connections>
                 </viewController>
@@ -154,6 +178,7 @@
                         <outlet property="bigShield" destination="XAh-cn-rC8" id="6nL-Ew-qGR"/>
                         <outlet property="boogiePopUp" destination="jba-6c-o96" id="jfZ-IU-dF0"/>
                         <outlet property="chugShield" destination="lWn-qi-IK8" id="N4M-g4-36l"/>
+                        <outlet property="deathPopUp" destination="cHw-pz-CmR" id="e4q-UH-aa5"/>
                         <outlet property="healthBar" destination="LAQ-Qs-gxo" id="e1T-n7-Xck"/>
                         <outlet property="healthBarBackground" destination="2Rn-nm-g2c" id="t8X-9u-b2P"/>
                         <outlet property="healthView" destination="yX6-tz-ECr" id="eea-U5-PJ2"/>
@@ -163,7 +188,6 @@
                         <outlet property="stormCounter" destination="gkb-1I-92K" id="iIE-1C-5Je"/>
                         <outlet property="stormNotification" destination="CTj-cY-Tio" id="6mS-qI-D6K"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="segueToHome" id="DH6-BS-Xlq"/>
-                        <segue destination="3Cf-UG-hHf" kind="show" identifier="segueToDeath" id="f6T-ub-w8c"/>
                         <segue destination="9CN-7w-qOM" kind="show" identifier="segueGameToEnd" id="lRw-k6-y5J"/>
                     </connections>
                 </viewController>
@@ -248,58 +272,45 @@
                     <color key="backgroundColor" red="0.97254901960784312" green="0.7803921568627451" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <viewLayoutGuide key="safeArea" id="WZt-MF-OtI"/>
                 </view>
+                <view contentMode="scaleToFill" id="cHw-pz-CmR">
+                    <rect key="frame" x="0.0" y="0.0" width="381" height="817"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="deathBackground" translatesAutoresizingMaskIntoConstraints="NO" id="XIs-oV-BmM">
+                            <rect key="frame" x="0.0" y="0.0" width="378" height="817"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="youDied" translatesAutoresizingMaskIntoConstraints="NO" id="rAV-RA-4Lp">
+                            <rect key="frame" x="70" y="44" width="240" height="70"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" alpha="0.65000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cross" translatesAutoresizingMaskIntoConstraints="NO" id="GLm-QB-nf6">
+                            <rect key="frame" x="69" y="146" width="240" height="413"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gIR-30-5op">
+                            <rect key="frame" x="231" y="633" width="78" height="29"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="d72564deb42d9a12610bcdc31963247d"/>
+                            <connections>
+                                <action selector="homeButtonDeath:" destination="ZqW-Pf-v8t" eventType="touchUpInside" id="gri-XO-Wwc"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFI-Rb-deu">
+                            <rect key="frame" x="69" y="633" width="91" height="28"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="reviveButton"/>
+                            <connections>
+                                <action selector="reviveButton:" destination="ZqW-Pf-v8t" eventType="touchUpInside" id="0ep-eH-H1x"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <viewLayoutGuide key="safeArea" id="JMX-G2-6l5"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="669.60000000000002" y="131.52709359605913"/>
-        </scene>
-        <!--Death View Controller-->
-        <scene sceneID="hE7-7e-hw7">
-            <objects>
-                <viewController id="3Cf-UG-hHf" customClass="DeathViewController" customModule="FortniteHealth" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="BGb-PJ-BLT">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="deathBackground" translatesAutoresizingMaskIntoConstraints="NO" id="XIs-oV-BmM">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="youDied" translatesAutoresizingMaskIntoConstraints="NO" id="rAV-RA-4Lp">
-                                <rect key="frame" x="68" y="84" width="240" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gIR-30-5op">
-                                <rect key="frame" x="230" y="618" width="78" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="d72564deb42d9a12610bcdc31963247d"/>
-                                <connections>
-                                    <action selector="homeButton:" destination="3Cf-UG-hHf" eventType="touchUpInside" id="Nyj-9W-5f8"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFI-Rb-deu">
-                                <rect key="frame" x="68" y="618" width="91" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="reviveButton"/>
-                                <connections>
-                                    <action selector="reviveButton:" destination="3Cf-UG-hHf" eventType="touchUpInside" id="0wa-RR-UCt"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" alpha="0.65000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cross" translatesAutoresizingMaskIntoConstraints="NO" id="GLm-QB-nf6">
-                                <rect key="frame" x="68" y="181" width="240" height="413"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="5kr-Tv-Rqf"/>
-                    </view>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="segueToHome2" id="Jdm-qh-NTN"/>
-                        <segue destination="ZqW-Pf-v8t" kind="show" identifier="segueToGame2" id="d3V-36-30c"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gbX-vh-0Cv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1391.2" y="132.68365817091455"/>
         </scene>
         <!--End Game View Controller-->
         <scene sceneID="S3X-6H-m59">
@@ -375,7 +386,6 @@
         <image name="youDied" width="313" height="69"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Z0W-T2-6nI"/>
         <segue reference="DH6-BS-Xlq"/>
     </inferredMetricsTieBreakers>
 </document>

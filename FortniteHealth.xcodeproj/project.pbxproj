@@ -23,7 +23,6 @@
 		7EEB330520DA9C6000E32B3C /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB330420DA9C6000E32B3C /* UIView.swift */; };
 		7EEB330720DAC1F500E32B3C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB330620DAC1F500E32B3C /* GameViewController.swift */; };
 		7EEB330920DAC3F000E32B3C /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB330820DAC3F000E32B3C /* Global.swift */; };
-		7EEB330B20DACF0C00E32B3C /* DeathViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB330A20DACF0C00E32B3C /* DeathViewController.swift */; };
 		7EEB331120DB8B7B00E32B3C /* miniShield.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7EEB331020DB8B7B00E32B3C /* miniShield.mp3 */; };
 		7EEB331720DCBD2400E32B3C /* EndGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB331620DCBD2400E32B3C /* EndGameViewController.swift */; };
 /* End PBXBuildFile section */
@@ -68,7 +67,6 @@
 		7EEB330420DA9C6000E32B3C /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		7EEB330620DAC1F500E32B3C /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		7EEB330820DAC3F000E32B3C /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
-		7EEB330A20DACF0C00E32B3C /* DeathViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeathViewController.swift; sourceTree = "<group>"; };
 		7EEB331020DB8B7B00E32B3C /* miniShield.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = miniShield.mp3; sourceTree = "<group>"; };
 		7EEB331620DCBD2400E32B3C /* EndGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,7 +123,6 @@
 				33B93AFE20D7A70900C777AF /* StartViewController.swift */,
 				33B93B0020D7A70900C777AF /* Main.storyboard */,
 				7EEB331620DCBD2400E32B3C /* EndGameViewController.swift */,
-				7EEB330A20DACF0C00E32B3C /* DeathViewController.swift */,
 				7EEB330820DAC3F000E32B3C /* Global.swift */,
 				7EEB330620DAC1F500E32B3C /* GameViewController.swift */,
 				7EEB330420DA9C6000E32B3C /* UIView.swift */,
@@ -310,7 +307,6 @@
 				7EEB330920DAC3F000E32B3C /* Global.swift in Sources */,
 				33B93AFD20D7A70900C777AF /* AppDelegate.swift in Sources */,
 				7EEB331720DCBD2400E32B3C /* EndGameViewController.swift in Sources */,
-				7EEB330B20DACF0C00E32B3C /* DeathViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -27,7 +27,6 @@ class Global
     var checkDrinkTimer = Timer()
     var stormCount = 0
     var revived = false
-    var isPause = true
     var hasShot: Int = 0
     var shotTime = 0
     var doneShot = true
@@ -36,7 +35,8 @@ class Global
     var boogieTime = 0
     var hasBoogie: Int = 0
     var doneBoogie = true
-    
+    var isDead = false
+    var minDif = 5 //dont change as this is overwritten when short, medium or long is clicked
     
 }
 let global  = Global()

@@ -60,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //NSLog("didBecomeActive")
         //only do this if game is currently on gamescreen
         center.removeAllPendingNotificationRequests()
-        if global.isPause == false && global.fromBackground == true
+        if global.fromBackground == true && global.isDead == false
         {
             for i in 0...Int(global.downTime)
             {
@@ -87,11 +87,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             global.overallTime = global.overallTime + global.downTime
         }
+        if global.isDead == true && global.fromBackground == true
+        {
+             global.overallTime = global.overallTime + global.downTime
+        }
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        NSLog ("Terminate")
+        //NSLog ("Terminate")
         center.removeAllPendingNotificationRequests()
     }
 
@@ -105,19 +109,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //game end delay
         let delayGameEnd = Double(global.stormTimes[4] - Int(global.overallTime))
         
+        //boolean to control only one shot or boogie notification
+        var notify = ""
         //set shot delay to -1 (it should stay this was if no shot is issues this game)
         var delayShot: Double = -1
-        if global.hasShot == 1
+        if global.hasShot == 1 && global.doneShot == false
         {
             delayShot = Double(global.shotTime - Int(global.overallTime))
         }
         
         //set shot delay to -1 (it should stay this was if no shot is issues this game)
         var delayBoogie: Double = -1
-        if global.hasShot == 1
+        if global.hasBoogie == 1 && global.doneBoogie == false
         {
             delayBoogie = Double(global.boogieTime - Int(global.overallTime))
         }
+        
+        if Int(global.overallTime) < global.shotTime &&  Int(global.overallTime) < global.boogieTime
+        {
+            if global.shotTime < global.boogieTime
+            {
+                notify = "shot"
+            }
+            else
+            {
+                notify = "boogie"
+            }
+        }
+        else if Int(global.overallTime) < global.shotTime && Int(global.overallTime) > global.boogieTime
+        {
+            notify = "shot"
+        }
+        else if Int(global.overallTime) < global.shotTime && Int(global.overallTime) > global.boogieTime
+        {
+            notify = "boogie"
+        }
+        else
+        {
+            notify = ""
+        }
+        
+        
         
        
         var gameTime = Int(global.overallTime)
@@ -166,7 +198,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        
         // If Notifications allowed
         center.getNotificationSettings { (settings) in
-            if settings.authorizationStatus == .authorized
+            if settings.authorizationStatus == .authorized && global.isDead == false
             {
                 if delayStorm1 > 0 && delayStorm1 < Double(delayDeath)
                 {
@@ -188,11 +220,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 {
                     self.requestNotification(identifier: "notifyLowHealth", title: "Health Warning", body: "You're on low health", delay: Double(delayHealthWarning))
                 }
-                if delayShot > 0 && delayShot < Double(delayDeath)//dont change this though
+                
+                if delayShot > 0 && notify == "shot" && delayShot < Double(delayDeath)//dont change this though
                 {
                     self.requestNotification(identifier: "notifyShot", title: "Alert", body: "Its shot time", delay: Double(delayShot))
                 }
-                if delayBoogie > 0 && delayBoogie < Double(delayDeath)//dont change this though
+                if delayBoogie > 0 && notify == "boogie" && delayBoogie < Double(delayDeath)//dont change this though
                 {
                     self.requestNotification(identifier: "notifyBoogie", title: "Alert", body: "You've been boogied", delay: Double(delayBoogie))
                 }
@@ -203,7 +236,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 {
                     self.requestNotification(identifier: "notifyDeath", title: "Alert", body: "You just died", delay: Double(delayDeath))
                 }
-                
+            }
+            //notify end of game only if exited from death view
+            else if global.isDead == true
+            {
+                 self.requestNotification(identifier: "notifyGameEnd", title: "Alert", body: "The game just ended", delay: Double(delayGameEnd))
             }
         }
     }
