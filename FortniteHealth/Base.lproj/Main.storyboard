@@ -53,29 +53,23 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jRa-8w-qzp">
                                 <rect key="frame" x="116" y="474" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="onTintColor" red="0.089968361628384647" green="0.85515149111675126" blue="0.12148360580636747" alpha="0.58261986301369861" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="onTintColor" red="0.78272161849999999" green="0.8061955583" blue="0.84255963560000002" alpha="0.58261986300000002" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="thumbTintColor" red="0.1647058824" green="0.1647058824" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ce9-Fm-V3O">
                                 <rect key="frame" x="114" y="532" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="onTintColor" red="0.089968361629999993" green="0.85515149109999999" blue="0.12148360580000001" alpha="0.58261986300000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="onTintColor" red="0.78272161849844801" green="0.80619555833070133" blue="0.84255963563919067" alpha="0.58261986300000002" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="thumbTintColor" red="0.1647058824" green="0.1647058824" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Shot Enabled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKy-5V-G1q">
-                                <rect key="frame" x="192" y="484" width="102" height="21"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="shotEnabled" translatesAutoresizingMaskIntoConstraints="NO" id="ceL-jq-VDF">
+                                <rect key="frame" x="191" y="482" width="80" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Boogie Enabled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wek-j4-iHp">
-                                <rect key="frame" x="192" y="538" width="120" height="21"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="boogieEnabled" translatesAutoresizingMaskIntoConstraints="NO" id="Yfh-8a-eyE">
+                                <rect key="frame" x="191" y="540" width="80" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -324,10 +318,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="deathBackground" translatesAutoresizingMaskIntoConstraints="NO" id="jB5-th-fEX">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2UU-95-8Dd">
                                 <rect key="frame" x="148" y="619" width="78" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -345,6 +335,10 @@
                                 <rect key="frame" x="62" y="84" width="250" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="deathBackground" translatesAutoresizingMaskIntoConstraints="NO" id="jB5-th-fEX">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="EAk-G6-uTv"/>
@@ -360,6 +354,7 @@
     </scenes>
     <resources>
         <image name="bigShield" width="512" height="512"/>
+        <image name="boogieEnabled" width="111" height="15"/>
         <image name="boogieText2" width="281" height="30"/>
         <image name="boogieText3" width="249" height="30"/>
         <image name="boogieText4" width="148" height="40"/>
@@ -380,6 +375,7 @@
         <image name="miniShield" width="512" height="512"/>
         <image name="reviveButton" width="91" height="28"/>
         <image name="shortGame" width="89" height="29"/>
+        <image name="shotEnabled" width="98" height="15"/>
         <image name="shotTimeRed" width="145" height="29"/>
         <image name="stormNotification" width="376" height="30"/>
         <image name="text1" width="320" height="30"/>

@@ -41,8 +41,8 @@ class StartViewController: UIViewController {
     @IBAction func shortButton(_ sender: UIButton)
     {
         readSwitch()
-        global.stormStart = Int(arc4random_uniform(4/*121*/))
-        global.minDif = 5 //TESTING minimum time difference between shot or boogie
+        global.stormStart = Int(arc4random_uniform(61))
+        global.minDif = 120 //TESTING minimum time difference between shot or boogie
         global.gameType = "short"
         do
         {
@@ -58,8 +58,8 @@ class StartViewController: UIViewController {
     @IBAction func mediumButton(_ sender: UIButton)
     {
         readSwitch()
-        global.stormStart = Int(arc4random_uniform(301))
-        global.minDif = 100 //minimum time difference between shot or boogie
+        global.stormStart = Int(arc4random_uniform(241))
+        global.minDif = 300 //minimum time difference between shot or boogie
         global.gameType = "medium"
         do
         {
@@ -75,8 +75,8 @@ class StartViewController: UIViewController {
     @IBAction func longButton(_ sender: UIButton)
     {
         readSwitch()
-        global.stormStart = Int(arc4random_uniform(481))
-        global.minDif = 500 //minimum time difference between shot or boogie
+        global.stormStart = Int(arc4random_uniform(601))
+        global.minDif = 600 //minimum time difference between shot or boogie
         global.gameType = "long"
         do
         {

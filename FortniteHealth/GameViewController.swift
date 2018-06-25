@@ -469,20 +469,20 @@ class GameViewController: UIViewController {
         if global.gameType == "short"
         {
             //setup for testing purposes atm
-            global.stormTimes = [global.stormStart, 10/*480*/, 20/*720*/, 30/*960*/, 200/*1200*/]
-            global.stormDamages = [0, 1/*0.01*/, 1/*0.02*/, 2/*0.05*/, 2/*0.1*/]
+            global.stormTimes = [global.stormStart, 480, 810, 1050, 1200]
+            global.stormDamages = [0, 0.182, 0.263, 0.365, 0.583]
         }
         else if global.gameType == "medium"
         {
             
-            global.stormTimes = [global.stormStart, 1440, 2160, 2880, 3600]
-            global.stormDamages = [0, 0.0365, 0.0731, 0.183, 0.365]
+            global.stormTimes = [global.stormStart, 1440, 2520, 3240, 3600]
+            global.stormDamages = [0, 0.0868, 0.116, 0.174, 0.347]
         }
         else if global.gameType == "long"
         {
             
-            global.stormTimes = [global.stormStart, 2880, 4320, 5760, 7200]
-            global.stormDamages = [0, 0.0256, 0.512, 0.128, 0.256]
+            global.stormTimes = [global.stormStart, 3000, 5400, 6600, 7200]
+            global.stormDamages = [0, 0.05, 0.0625, 0.125, 0.25]
         }
     }
     
