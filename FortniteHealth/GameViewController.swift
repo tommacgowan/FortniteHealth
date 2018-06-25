@@ -174,6 +174,7 @@ class GameViewController: UIViewController {
             else if Int(global.overallTime) <= global.stormTimes[2]
             {
                 global.stormCount = 2
+                 stormNotification.alpha = 1
                 global.damageStep = global.stormDamages[2]
                 global.counter = global.counter - global.damageStep
                 updateView()
@@ -181,6 +182,7 @@ class GameViewController: UIViewController {
             else if Int(global.overallTime) <= global.stormTimes[3]
             {
                 global.stormCount = 3
+                 stormNotification.alpha = 1
                 global.damageStep = global.stormDamages[3]
                 global.counter = global.counter - global.damageStep
                 updateView()
@@ -188,6 +190,7 @@ class GameViewController: UIViewController {
             else if Int(global.overallTime) < global.stormTimes[4]
             {
                 global.stormCount = 4
+                 stormNotification.alpha = 1
                 global.damageStep = global.stormDamages[4]
                 global.counter = global.counter - global.damageStep
                 updateView()

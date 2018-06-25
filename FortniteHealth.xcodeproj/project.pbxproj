@@ -486,7 +486,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4GQHN3P427;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FortniteHealth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -507,7 +507,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4GQHN3P427;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FortniteHealth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

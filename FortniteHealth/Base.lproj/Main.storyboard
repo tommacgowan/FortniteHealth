@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_9" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,7 +15,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="StartViewController" customModule="FortniteHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="center" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fortniteHealthBackground" translatesAutoresizingMaskIntoConstraints="NO" id="ylh-YB-Rv9">
@@ -97,7 +97,7 @@
             <objects>
                 <viewController id="ZqW-Pf-v8t" customClass="GameViewController" customModule="FortniteHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hJW-Zu-D7n">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fortniteHealthBackground" translatesAutoresizingMaskIntoConstraints="NO" id="YB3-e7-YXe">
@@ -203,7 +203,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="icy-77-nu2">
-                            <rect key="frame" x="171" y="593" width="56" height="23"/>
+                            <rect key="frame" x="171" y="626" width="56" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="done"/>
                             <connections>
@@ -211,27 +211,27 @@
                             </connections>
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="boogieText2" translatesAutoresizingMaskIntoConstraints="NO" id="JpW-ck-bkT">
-                            <rect key="frame" x="79" y="386" width="240" height="30"/>
+                            <rect key="frame" x="79" y="419" width="240" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="boogieText3" translatesAutoresizingMaskIntoConstraints="NO" id="htH-J7-rr6">
-                            <rect key="frame" x="79" y="424" width="240" height="30"/>
+                            <rect key="frame" x="79" y="457" width="240" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="boogieText4" translatesAutoresizingMaskIntoConstraints="NO" id="Jbj-Xj-K62">
-                            <rect key="frame" x="124" y="462" width="150" height="40"/>
+                            <rect key="frame" x="124" y="495" width="150" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="boogieText6" translatesAutoresizingMaskIntoConstraints="NO" id="m5u-eE-4sN">
-                            <rect key="frame" x="79" y="242" width="240" height="30"/>
+                            <rect key="frame" x="79" y="275" width="240" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="boogieText7" translatesAutoresizingMaskIntoConstraints="NO" id="ley-6c-aib">
-                            <rect key="frame" x="124" y="280" width="150" height="40"/>
+                            <rect key="frame" x="124" y="313" width="150" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="boogieText5" translatesAutoresizingMaskIntoConstraints="NO" id="zCK-nu-FtS">
-                            <rect key="frame" x="64" y="125" width="270" height="50"/>
+                            <rect key="frame" x="64" y="158" width="270" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                     </subviews>
@@ -243,7 +243,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O9T-VL-Liu">
-                            <rect key="frame" x="171" y="591" width="56" height="23"/>
+                            <rect key="frame" x="171" y="626" width="56" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="done"/>
                             <connections>
@@ -251,27 +251,27 @@
                             </connections>
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="text1" translatesAutoresizingMaskIntoConstraints="NO" id="9ra-pe-8dq">
-                            <rect key="frame" x="79" y="241" width="240" height="30"/>
+                            <rect key="frame" x="79" y="276" width="240" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="text2" translatesAutoresizingMaskIntoConstraints="NO" id="CDJ-FE-zbu">
-                            <rect key="frame" x="79" y="279" width="240" height="30"/>
+                            <rect key="frame" x="79" y="314" width="240" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="text3" translatesAutoresizingMaskIntoConstraints="NO" id="aut-oV-zqH">
-                            <rect key="frame" x="79" y="317" width="240" height="40"/>
+                            <rect key="frame" x="79" y="352" width="240" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="text4" translatesAutoresizingMaskIntoConstraints="NO" id="HmT-3p-n9w">
-                            <rect key="frame" x="79" y="429" width="240" height="30"/>
+                            <rect key="frame" x="79" y="464" width="240" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="text5" translatesAutoresizingMaskIntoConstraints="NO" id="mJ2-Aa-AI5">
-                            <rect key="frame" x="79" y="467" width="240" height="40"/>
+                            <rect key="frame" x="79" y="502" width="240" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="shotTimeRed" translatesAutoresizingMaskIntoConstraints="NO" id="dPt-cd-ceu">
-                            <rect key="frame" x="124" y="128" width="150" height="40"/>
+                            <rect key="frame" x="124" y="163" width="150" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                     </subviews>
@@ -287,16 +287,16 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="youDied" translatesAutoresizingMaskIntoConstraints="NO" id="rAV-RA-4Lp">
-                            <rect key="frame" x="70" y="118" width="240" height="70"/>
+                            <rect key="frame" x="70" y="150" width="240" height="70"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" alpha="0.65000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cross" translatesAutoresizingMaskIntoConstraints="NO" id="GLm-QB-nf6">
-                            <rect key="frame" x="70" y="196" width="240" height="413"/>
+                            <rect key="frame" x="70" y="228" width="240" height="413"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFI-Rb-deu">
-                            <rect key="frame" x="70" y="617" width="91" height="28"/>
+                            <rect key="frame" x="70" y="649" width="91" height="28"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="reviveButton"/>
                             <connections>
@@ -304,7 +304,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gIR-30-5op">
-                            <rect key="frame" x="232" y="614" width="78" height="34"/>
+                            <rect key="frame" x="232" y="646" width="78" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="d72564deb42d9a12610bcdc31963247d"/>
                             <connections>
@@ -323,7 +323,7 @@
             <objects>
                 <viewController id="9CN-7w-qOM" customClass="EndGameViewController" customModule="FortniteHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sXv-ny-V2q">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="deathBackground" translatesAutoresizingMaskIntoConstraints="NO" id="jB5-th-fEX">
