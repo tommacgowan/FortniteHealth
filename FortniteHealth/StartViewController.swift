@@ -11,9 +11,11 @@ import AVFoundation
 
 class StartViewController: UIViewController {
     
+    @IBOutlet weak var labelVersionNo: UILabel!
     @IBOutlet weak var shotSwitch: UISwitch!
     @IBOutlet weak var boogieSwitch: UISwitch!
     
+    let appVersionString: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
     let buttonPress = Bundle.main.url(forResource: "buttonPress", withExtension: "mp3")
     var audioPlayer = AVAudioPlayer()
     var audioSession = AVAudioSession.sharedInstance()
@@ -22,7 +24,7 @@ class StartViewController: UIViewController {
     //SETUP
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        labelVersionNo.text = String("Version \(appVersionString)")
         do{
             try audioSession.setCategory(AVAudioSessionCategoryAmbient)
         }catch{

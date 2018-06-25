@@ -70,12 +70,20 @@
                                 <rect key="frame" x="191" y="540" width="80" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cje-Y9-mJt">
+                                <rect key="frame" x="224" y="37" width="121" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="boogieSwitch" destination="Ce9-Fm-V3O" id="2Hw-sz-dtn"/>
+                        <outlet property="labelVersionNo" destination="Cje-Y9-mJt" id="ecX-S0-sym"/>
                         <outlet property="shotSwitch" destination="jRa-8w-qzp" id="puM-zX-7oP"/>
                         <segue destination="ZqW-Pf-v8t" kind="show" identifier="segueToGame" id="Z0W-T2-6nI"/>
                     </connections>
@@ -271,36 +279,36 @@
                     <viewLayoutGuide key="safeArea" id="WZt-MF-OtI"/>
                 </view>
                 <view contentMode="scaleToFill" id="cHw-pz-CmR">
-                    <rect key="frame" x="0.0" y="0.0" width="381" height="817"/>
+                    <rect key="frame" x="0.0" y="0.0" width="381" height="890"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="deathBackground" translatesAutoresizingMaskIntoConstraints="NO" id="XIs-oV-BmM">
-                            <rect key="frame" x="0.0" y="0.0" width="378" height="817"/>
+                            <rect key="frame" x="0.0" y="-8" width="406" height="906"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="youDied" translatesAutoresizingMaskIntoConstraints="NO" id="rAV-RA-4Lp">
-                            <rect key="frame" x="70" y="44" width="240" height="70"/>
+                            <rect key="frame" x="70" y="118" width="240" height="70"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" alpha="0.65000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cross" translatesAutoresizingMaskIntoConstraints="NO" id="GLm-QB-nf6">
-                            <rect key="frame" x="69" y="146" width="240" height="413"/>
+                            <rect key="frame" x="70" y="196" width="240" height="413"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gIR-30-5op">
-                            <rect key="frame" x="231" y="633" width="78" height="29"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" image="d72564deb42d9a12610bcdc31963247d"/>
-                            <connections>
-                                <action selector="homeButtonDeath:" destination="ZqW-Pf-v8t" eventType="touchUpInside" id="gri-XO-Wwc"/>
-                            </connections>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFI-Rb-deu">
-                            <rect key="frame" x="69" y="633" width="91" height="28"/>
+                            <rect key="frame" x="70" y="617" width="91" height="28"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="reviveButton"/>
                             <connections>
                                 <action selector="reviveButton:" destination="ZqW-Pf-v8t" eventType="touchUpInside" id="0ep-eH-H1x"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gIR-30-5op">
+                            <rect key="frame" x="232" y="614" width="78" height="34"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="d72564deb42d9a12610bcdc31963247d"/>
+                            <connections>
+                                <action selector="homeButtonDeath:" destination="ZqW-Pf-v8t" eventType="touchUpInside" id="gri-XO-Wwc"/>
                             </connections>
                         </button>
                     </subviews>
@@ -386,6 +394,6 @@
         <image name="youDied" width="313" height="69"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SsI-ar-UCi"/>
+        <segue reference="DH6-BS-Xlq"/>
     </inferredMetricsTieBreakers>
 </document>
