@@ -122,14 +122,6 @@
                                     <action selector="homeButton:" destination="ZqW-Pf-v8t" eventType="touchUpInside" id="cr7-aL-jKy"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Q6-aF-AkE">
-                                <rect key="frame" x="62" y="332" width="45" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Shield" image="miniShield"/>
-                                <connections>
-                                    <action selector="miniShield:" destination="ZqW-Pf-v8t" eventType="touchUpInside" id="iUd-s5-3HK"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100/100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yX6-tz-ECr">
                                 <rect key="frame" x="143" y="237" width="89" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -137,6 +129,32 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dw2-Vb-iCQ">
+                                <rect key="frame" x="53" y="322" width="63" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.1647058824" green="0.1647058824" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.90000000000000002"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="owa-8n-SK4">
+                                <rect key="frame" x="156" y="322" width="63" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.1647058824" green="0.1647058824" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.90000000000000002"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Q6-aF-AkE">
+                                <rect key="frame" x="62" y="330" width="45" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Shield" image="miniShield"/>
+                                <connections>
+                                    <action selector="miniShield:" destination="ZqW-Pf-v8t" eventType="touchUpInside" id="iUd-s5-3HK"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LnG-cO-SKE">
                                 <rect key="frame" x="88" y="89" width="0.0" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -152,7 +170,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XAh-cn-rC8">
-                                <rect key="frame" x="165" y="332" width="45" height="45"/>
+                                <rect key="frame" x="166" y="330" width="45" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Big" image="bigShield"/>
                                 <connections>
@@ -163,8 +181,17 @@
                                 <rect key="frame" x="37" y="97" width="300" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="biu-Fr-nya">
+                                <rect key="frame" x="258" y="322" width="63" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.1647058824" green="0.1647058824" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.90000000000000002"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lWn-qi-IK8">
-                                <rect key="frame" x="267" y="331" width="45" height="45"/>
+                                <rect key="frame" x="267" y="330" width="45" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <state key="normal" title="Button" image="chugJug"/>
@@ -193,6 +220,9 @@
                         <outlet property="shotPopUp" destination="qvl-IO-8AS" id="pIN-ei-ksk"/>
                         <outlet property="stormCounter" destination="gkb-1I-92K" id="iIE-1C-5Je"/>
                         <outlet property="stormNotification" destination="CTj-cY-Tio" id="6mS-qI-D6K"/>
+                        <outletCollection property="buttonBackgrounds" destination="biu-Fr-nya" collectionClass="NSMutableArray" id="aNn-Iq-cZt"/>
+                        <outletCollection property="buttonBackgrounds" destination="owa-8n-SK4" collectionClass="NSMutableArray" id="fV1-NM-cA2"/>
+                        <outletCollection property="buttonBackgrounds" destination="Dw2-Vb-iCQ" collectionClass="NSMutableArray" id="XX3-zj-ykn"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="segueToHome" id="DH6-BS-Xlq"/>
                         <segue destination="9CN-7w-qOM" kind="show" identifier="segueGameToEnd" id="lRw-k6-y5J"/>
                     </connections>
@@ -316,7 +346,7 @@
                     <viewLayoutGuide key="safeArea" id="JMX-G2-6l5"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="669.60000000000002" y="131.52709359605913"/>
+            <point key="canvasLocation" x="669.60000000000002" y="130.88455772113943"/>
         </scene>
         <!--End Game View Controller-->
         <scene sceneID="S3X-6H-m59">

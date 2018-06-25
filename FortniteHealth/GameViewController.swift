@@ -12,6 +12,7 @@ import Foundation
 
 class GameViewController: UIViewController {
     
+    @IBOutlet var buttonBackgrounds: [UIImageView]!
     @IBOutlet var deathPopUp: UIView!
     @IBOutlet var boogiePopUp: UIView!
     @IBOutlet weak var stormCounter: UIImageView!
@@ -41,6 +42,7 @@ class GameViewController: UIViewController {
     {
         super.viewDidLoad()
         
+        
         global.gameOn = true
         global.overallTime = 0
         healthBar.setWidth(width: 2.5*CGFloat(global.counter))
@@ -51,6 +53,10 @@ class GameViewController: UIViewController {
         miniShield.alpha = 1
         bigShield.alpha = 1
         chugShield.alpha = 1
+        for i in buttonBackgrounds
+        {
+            i.alpha = 1
+        }
         
         stormSetup()
         setBoogieShot()
@@ -323,6 +329,10 @@ class GameViewController: UIViewController {
         miniShield.alpha = 0.5
         bigShield.alpha = 0.5
         chugShield.alpha = 0.5
+        for i in buttonBackgrounds
+        {
+            i.alpha = 0.5
+        }
     }
     
     @objc func checkDrink()
@@ -338,6 +348,10 @@ class GameViewController: UIViewController {
             miniShield.alpha = 1
             bigShield.alpha = 1
             chugShield.alpha = 1
+            for i in buttonBackgrounds
+            {
+                i.alpha = 1
+            }
          }
     }
     
