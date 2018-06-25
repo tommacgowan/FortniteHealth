@@ -60,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //NSLog("didBecomeActive")
         //only do this if game is currently on gamescreen
         center.removeAllPendingNotificationRequests()
-        if global.fromBackground == true && global.isDead == false
+        if global.fromBackground == true && global.isDead == false && global.gameOn == true
         {
             for i in 0...Int(global.downTime)
             {
@@ -87,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             global.overallTime = global.overallTime + global.downTime
         }
-        if global.isDead == true && global.fromBackground == true
+        if global.isDead == true && global.fromBackground == true && global.gameOn == true
         {
              global.overallTime = global.overallTime + global.downTime
         }
@@ -237,7 +237,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     self.requestNotification(identifier: "notifyDeath", title: "Alert", body: "You just died", delay: Double(delayDeath))
                 }
             }
-            //notify end of game only if exited from death view
+            //notify end of game only when exited from death view
             else if global.isDead == true
             {
                  self.requestNotification(identifier: "notifyGameEnd", title: "Alert", body: "The game just ended", delay: Double(delayGameEnd))

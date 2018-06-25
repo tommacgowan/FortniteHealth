@@ -471,7 +471,8 @@ class GameViewController: UIViewController {
         //determine game type and setup storm settings
         if global.gameType == "short"
         {
-            //setup for testing purposes atm
+            //global.stormTimes = [2, 10, 15, 20, 25]//TESTING
+            //global.stormDamages = [1, 1, 1, 1, 1]//TESTING
             global.stormTimes = [global.stormStart, 480, 810, 1050, 1200]
             global.stormDamages = [0, 0.182, 0.263, 0.365, 0.583]
         }
