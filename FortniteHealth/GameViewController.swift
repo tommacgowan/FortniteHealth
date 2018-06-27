@@ -161,6 +161,7 @@ class GameViewController: UIViewController {
     {
         
         global.overallTime = global.overallTime + 1
+        NSLog("%f", global.overallTime)
         if global.isDead == false
         {
             if Int(global.overallTime) <= global.stormTimes[0]
@@ -376,16 +377,18 @@ class GameViewController: UIViewController {
     {
         if global.revived == false
         {
+            let min = global.stormTimes[0] + 10
+            let max = global.stormTimes[4] - 10
             if global.hasShot == 1 && global.hasBoogie != 1 //shot only
             {
-                global.shotTime = Int(arc4random_uniform(UInt32(global.stormTimes[4])))
+                global.shotTime = min + Int(arc4random_uniform(UInt32(max - min + 1)))
                 global.doneShot = false
                 NSLog("Has shot at %d",global.shotTime)
                 NSLog("No Boogie this time")
             }
             else if global.hasBoogie == 1 && global.hasShot != 1 //boogie only
             {
-                global.boogieTime = Int(arc4random_uniform(UInt32(global.stormTimes[4])))
+                global.boogieTime = min + Int(arc4random_uniform(UInt32(max - min + 1)))
                 global.doneBoogie = false
                 NSLog("No Shot this time")
                 NSLog("Has Boogie at %d",global.boogieTime)
@@ -395,8 +398,8 @@ class GameViewController: UIViewController {
                 var dif: Int = 0
                 while dif < global.minDif //TESTING difference needs to increase to approx 30 seconds
                 {
-                    global.boogieTime = Int(arc4random_uniform(UInt32(global.stormTimes[4])))
-                    global.shotTime = Int(arc4random_uniform(UInt32(global.stormTimes[4])))
+                    global.boogieTime = min + Int(arc4random_uniform(UInt32(max - min + 1)))
+                    global.shotTime = min + Int(arc4random_uniform(UInt32(max - min + 1)))
                     dif = Int(abs(global.shotTime - global.boogieTime))
                 }
                 global.doneBoogie = false
