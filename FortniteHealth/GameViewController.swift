@@ -216,6 +216,7 @@ class GameViewController: UIViewController {
             {
                 global.counter = 100
                 self.shotPopUp.removeFromSuperview()
+                self.boogiePopUp.removeFromSuperview()
                 if miniShield.isEnabled == false
                 {
                     audioPlayer.stop()
@@ -396,7 +397,7 @@ class GameViewController: UIViewController {
             else if global.hasBoogie == 1 && global.hasShot == 1 //both shot and boogie
             {
                 var dif: Int = 0
-                while dif < global.minDif //TESTING difference needs to increase to approx 30 seconds
+                while dif < global.minDif
                 {
                     global.boogieTime = min + Int(arc4random_uniform(UInt32(max - min + 1)))
                     global.shotTime = min + Int(arc4random_uniform(UInt32(max - min + 1)))
@@ -424,6 +425,7 @@ class GameViewController: UIViewController {
                 if global.isDead == true
                 {
                     global.doneBoogie = true
+                    global.doneShot = true
                 }
                 else
                 {
@@ -437,11 +439,12 @@ class GameViewController: UIViewController {
                 if global.isDead == true
                 {
                     global.doneShot = true
+                    global.doneBoogie = true
                 }
                 else
                 {
                     //NSLog("2")
-                    displayPopUp(view: "boogiePopUp")
+                    displayPopUp(view: "shotPopUp")
                     global.doneBoogie = true
                 }
             }
