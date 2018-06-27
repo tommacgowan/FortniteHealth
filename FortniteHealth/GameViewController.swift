@@ -377,8 +377,8 @@ class GameViewController: UIViewController {
     {
         if global.revived == false
         {
-            let min = global.stormTimes[0] + 10
-            let max = global.stormTimes[4] - 10
+            let min = global.stormTimes[0] + 30
+            let max = global.stormTimes[4] - 30
             if global.hasShot == 1 && global.hasBoogie != 1 //shot only
             {
                 global.shotTime = min + Int(arc4random_uniform(UInt32(max - min + 1)))
